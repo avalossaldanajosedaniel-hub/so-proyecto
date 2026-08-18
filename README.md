@@ -1,4 +1,5 @@
 # virussss
-este es un virus(es de la escuela)
-Proyecto de la escuela de una materia.
+JOSE DAANIEL AVALOS SALDANA
+DOMINIO no elegido
+
 

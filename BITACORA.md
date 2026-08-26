@@ -49,3 +49,26 @@ Porcentaje de CPU (%CPU):
 Consumo observado: 0.0%.
 Por qué es el número correcto: Es el valor esperado porque el proceso no está realizando cómputo ni operaciones matemáticas intensivas en el procesador. Mientras está en la llamada bloqueante sleep(), el planificador (scheduler) del sistema operativo lo remueve de la cola de ejecución activa de la CPU, consumiendo cero ciclos de procesamiento mientras espera.
 
+## AVANCE DEL PROYECTO
+Qué es un proceso. UN proceso es un software o programa que se esta ejecutando
+Cómo vive tu servidor en el SO.Aquí tienes una versión más natural, corta y directa, redactada como si fuera una respuesta propia de un estudiante en un laboratorio:
+
+1. PID (Process ID): Es el número único que el sistema le asigna al servidor para identificarlo mientras está corriendo (por ejemplo, el 314126).
+
+2. PPID (Padre): Es el PID del proceso que lanzó al servidor. En este caso es la terminal (la shell) donde ejecuté el comando java.
+
+3. Estado (STAT):
+
+S (Sleeping): Es su estado normal. Está dormido/bloqueado esperando que llegue una petición de un cliente, así que no gasta CPU.
+
+R (Running): Solo pasa a este estado en los momentos exactos en los que está procesando un pedido en la CPU.
+
+T (Stopped): Aparece cuando lo pausamos con Ctrl + Z. El sistema congela su ejecución por completo.
+
+La l al lado (como Sl o Tl) solo significa que Java usa varios hilos de ejecución (threads).
+
+4. Consumo:
+
+CPU: Casi 0% la mayor parte del tiempo porque se queda en reposo (esperando conexiones) en lugar de hacer bucles infinitos.
+
+Memoria: Ocupa un bloque fijo de RAM (unos 30-80 MB) solo por tener la máquina virtual de Java (JVM) cargada.

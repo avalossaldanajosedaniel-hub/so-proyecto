@@ -91,6 +91,25 @@ La tabla de tu servidor dentro de un contenedor:
 
 
 
+### Antes de la clase:
+
+ Relación Padre e Hijo en la evidencia (`evidencias/hijo.txt`)
+Al analizar los procesos capturados mediante `ps -ef | grep java`:
+
+* **Proceso Padre (`ServidorPedidos`):** Se encuentra ejecutándose bajo el **PID `347571`** (creado desde la terminal con PPID `324317`).
+* **Proceso Hijo (`GeneradorPedidos`):** Se ejecuta con su propio **PID `352960`**. 
+
+En la jerarquía de Linux, cuando el Servidor lanza al Generador usando `ProcessBuilder`, el kernel le asigna al proceso hijo el **PPID (Parent Process ID)** correspondiente al PID del Servidor. Esto establece formalmente la relación de dependencia entre ambos procesos en el árbol del sistema operativo.
+
+ ¿Qué pasaría si quitaras el `waitFor()`?
+Si se elimina la línea `hijo.waitFor()`, el proceso padre (`ServidorPedidos`) no esperará a que el hijo termine de procesar las 2,000,000 de iteraciones. El padre continuará ejecutando sus líneas restantes, imprimirá *"Servidor (Padre) finalizando"* y se cerrará de inmediato.
+
+Por su parte, el hijo (`GeneradorPedidos`) seguirá corriendo en segundo plano hasta finalizar su tarea. Al quedarse sin un proceso padre activo, el hijo se convierte técnicamente en un **proceso huérfano** (*orphan*), por lo que es adoptado automáticamente por el proceso principal del sistema (`systemd` / PID 1) hasta que termine de ejecutarse.
+
+ ¿Por qué el hijo no puede modificar una variable del servidor?
+Esto se debe al **aislamiento del espacio de memoria virtual** del sistema operativo (concepto visto en el Bloque 1).
+
+Cuando un proceso padre crea un proceso hijo, el kernel de Linux le asigna al hijo su propia tabla de páginas de memoria totalmente independiente. Aunque ambos compartan código similar, la memoria física subyacente está segmentada y protegida. Cualquier modificación que el hijo haga sobre una variable solo afectará a su copia local en su propio espacio de usuario; la Unidad de Gestión de Memoria (MMU) impide estrictamente que un proceso escriba en la memoria asignada a otro proceso.
 
 
 

@@ -72,3 +72,35 @@ La l al lado (como Sl o Tl) solo significa que Java usa varios hilos de ejecuci�
 CPU: Casi 0% la mayor parte del tiempo porque se queda en reposo (esperando conexiones) en lugar de hacer bucles infinitos.
 
 Memoria: Ocupa un bloque fijo de RAM (unos 30-80 MB) solo por tener la máquina virtual de Java (JVM) cargada.
+
+
+### ANTES DE LA CLASE
+Qué es el cambio de contexto:Es el proceso que realiza el servidor cada milisegundos al detener el proceso y le da el CPE a otro proceso y despues de otro milisegundos este se reanundara, al dtenerlo este debe de guardar todo para despues volver como si nada
+
+La tabla de tu servidor dentro de un contenedor:
+#### Servidor dentro de un contenedor
+
+| Componente | Tipo de control | ¿Qué hace? | Impacto en el servidor dentro del contenedor |
+| :--- | :--- | :--- | :--- |
+| **Namespace de PID** | Aislamiento visual de procesos | Oculta la lista global de procesos de la máquina real. | El servidor corre creyendo que es el proceso principal del sistema (**PID 1**). No puede ver, listar ni interferir con otros procesos del host. |
+| **Namespace de Red (Net)** | Aislamiento de pila de red | Otorga una interfaz de red, tabla de rutas y puertos independientes. | Tiene sus propias interfaces de red virtuales y sus propios puertos. Puede abrir puertos (ej. 80 o 443) sin conflictos con la máquina host. |
+| **Cgroup (256 MB)** | Limitación de recursos de hardware | Define la cuota máxima de memoria RAM utilizable. | El procesador y el sistema limitan el consumo a 256 MB. Si el servidor sobrepasa esta cuota de RAM, el kernel ejecuta el **OOM Killer** y detiene el proceso inmediatamente. |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

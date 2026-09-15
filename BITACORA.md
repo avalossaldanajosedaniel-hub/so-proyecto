@@ -1,5 +1,5 @@
 s01 bloque 1: entorno y repositorio listos
-no he elegido el dominio
+Dominio elegido Tienda de equipos de redes
 # Bitácora de Trabajo
 
 ## Semana 1
@@ -34,7 +34,7 @@ El proceso con PID 1 es `/sbin/init` (o `systemd`). Su columna **PPID** muestra 
 2. Por qué ese proceso es el único que no pudo ser creado por otro proceso?
 Durante el arranque del equipo, el kernel de Linux toma el control del hardware y se inicializa en memoria. Al terminar, el kernel monta el sistema de archivos raíz y ejecuta directamente el binario `/sbin/init` (PID 1). Como no existía ningún otro proceso previo en el espacio de usuario ejecutando una llamada `fork()`, el propio kernel lo engendra de forma directa como el origen de todo el árbol de procesos. 
 
-
+holaaaaa
 
 PID, PPID y proceso padre:
 PID del servidor: 109395.
@@ -92,7 +92,7 @@ La tabla de tu servidor dentro de un contenedor:
 
 
 ### Antes de la clase:
-
+Semana 3
  Relación Padre e Hijo en la evidencia (`evidencias/hijo.txt`)
 Al analizar los procesos capturados mediante `ps -ef | grep java`:
 

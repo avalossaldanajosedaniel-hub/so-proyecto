@@ -113,13 +113,63 @@ Cuando un proceso padre crea un proceso hijo, el kernel de Linux le asigna al hi
 
 
 
+### Semana 5
+## BLOQUE1
+Tabla de intercalado
+# Condición de Carrera: Venta de Equipos de Red
 
+| Instante | Vendedor A (Switch) | Vendedor B (Switch) | Stock en Memoria### Antes de la clase
 
+#### 1. Tabla de intercalado con sobreventa (Dominio: Tienda de Equipos de Red)
+* **Stock inicial en memoria:** `3` unidades de NanoStation.
+* **Pedidos concurrentes:** Hilo A (Cliente/Vendedor 1 pide 2 unidades) e Hilo B (Cliente/Vendedor 2 pide 2 unidades).
 
+| Instante | Hilo A (Pedido de 2 Nanos) | Hilo B (Pedido de 2 Nanos) | Stock en Memoria |
+| :---: | :--- | :--- | :---: |
+| **1** | Consulta si `3 >= 2` $\rightarrow$ **Verdadero** | | **3** |
+| **2** | | Consulta si `3 >= 2` $\rightarrow$ **Verdadero** | **3** |
+| **3** | Descuenta `3 - 2` $\rightarrow$ Guarda **1** en su registro | | **3** |
+| **4** | | Descuenta `3 - 2` $\rightarrow$ Guarda **1** en su registro | **3** |
+| **5** | Confirma la venta A | | **1** |
+| **6** | | Confirma la venta B | **1** *(¡Número imposible!)* |
 
+* **Número imposible resultante:** El stock final en memoria queda en **`1`**.
+* **Por qué es imposible:** Había físicamente 3 antenas Nano en el almacén. Se despacharon dos pedidos de 2 unidades cada uno (lo que significa que salieron 4 antenas físicamente del local), pero al restarse de forma intercalada partiendo de una lectura vieja, el sistema matemáticamente sustrajo dos veces sobre un stock de 3, dejando un inventario fantasma de 1 unidad que en realidad nunca existió.
 
+#### 2. Sección crítica
+* **Dónde empieza y dónde termina:** La sección crítica empieza estrictamente en el momento en el que el servidor realiza la consulta o validación de la existencia y termina justo al finalizar la operación de descuento del inventario.
+* **Justificación:** Si proteges únicamente el descuento dejando fuera la consulta, el error persiste porque ambos hilos habrán pasado la validación previa al mismo tiempo usando información vieja. La consulta y el descuento forman un bloque indivisible: si un hilo evalúa el stock, ningún otro hilo debe poder consultar ni modificar la existencia hasta que el primer hilo termine de descontar por completo.
 
+#### 3. El costo en el negocio
+* **Qué pasa si el inventario dice que tienes stock (ej. 3) y no tienes ninguno:** Genera una sobreventa crítica, lo que se traduce en clientes furiosos, cancelación de instalaciones de red ya programadas, pérdida de reputación para la tienda de equipos y posibles devoluciones de dinero con penalización.
+* **Qué pasa si el inventario dice que tienes 0 y en realidad tienes 3:** Genera pérdida de ventas y clientes frustrados, ya que la tienda web les dice que el producto está agotado cuando físicamente sí hay mercadería en la bodega, dejando dinero estancado sin rotación. |
+| :---: | :--- | :--- | :---: |
+| **1** | LEE stock de Nano -> **5** | | **5** |
+| **2** | | LEE stock de Nano -> **5** | **5** |
+| **3** | RESTA 1 -> **4** (en su registro local) | | **5** |
+| **4** | | RESTA 1 -> **4** (en su registro local) | **5** |
+| **5** | ESCRIBE stock -> **4** | | **4** |
+| **6** | | ESCRIBE stock -> **4** | **4** *(Error crítico: Sobreventa)* |
+##BLOQUE 2
+### Antes de la clase
 
+#### Tabla de corridas experimentales (Tienda de Equipos de Red)
 
+| Corrida | Confirmadas | Rechazadas | Existencia final | Cuadra? |
+| :---: | :---: | :---: | :---: | :---: |
+| **1** | 10 | 0 | 9 | `false` |
+| **2** | 10 | 0 | 8 | `false` |
+| **3** | 10 | 0 | 7 | `false` |
+| **4** | 10 | 0 | 8 | `false` |
+| **5** | 10 | 0 | 7 | `false` |
 
+#### Análisis de resultados
 
+1. **Síntoma obtenido y corrida más clara:** 
+   El síntoma que salió en todas las ejecuciones fue la **sobreventa por pérdida de actualizaciones debido a condiciones de carrera** (los hilos sobrescriben el stock de memoria con valores viejos). Se ve más claro en la **Corrida 3 y la Corrida 5**, donde a pesar de haberse confirmado 10 ventas exitosas de antenas NanoStation, la existencia final en el sistema quedó en `7` unidades en lugar de `0`, reflejando un desfase masivo por datos perdidos.
+
+2. **Configuración necesaria para que fallara:** 
+   Se utilizaron **10 cajeros (hilos concurrentes) y una existencia inicial de 10 unidades** de antenas NanoStation, con una pequeña pausa simulada (`Thread.sleep(1)`) dentro de la sección crítica. El error **falló desde la primera corrida** y en todas las siguientes de forma constante, demostrando que la ausencia de exclusión mutua corrompe el inventario de inmediato bajo concurrencia.
+
+3. **Costo en el negocio (Peor corrida):** 
+   En la **Corrida 3 y Corrida 5** (donde la existencia final quedó en 7 en lugar de 0), el sistema registró falsamente que todavía quedaban 7 antenas NanoStation disponibles en el almacén cuando en realidad el inventario físico ya estaba totalmente agotado (se vendieron las 10 piezas). Si un cliente nuevo entra a la tienda web y compra esas 7 "existencias fantasma", la tienda incurrirá en una **sobreventa crítica de 7 equipos de red**, lo que se traduciría en incumplimiento de contratos de instalación, pérdida de confianza y la obligación de reembolsar o absorber el costo de reabastecer de emergencia equipo escaso para satisfacer a los clientes afectados.

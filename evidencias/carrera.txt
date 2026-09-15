@@ -1,0 +1,100 @@
+===== CORRIDA 1 =====
+Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+Cajero 2: VENDIDO
+Cajero 3: VENDIDO
+Cajero 6: VENDIDO
+Cajero 5: VENDIDO
+Cajero 8: VENDIDO
+Cajero 4: VENDIDO
+Cajero 10: VENDIDO
+Cajero 9: VENDIDO
+Cajero 7: VENDIDO
+Cajero 1: VENDIDO
+---------------------------------------
+Existencia inicial:   10
+Cajeros:              10
+Ventas confirmadas:   10
+Ventas rechazadas:    0
+Existencia final:     9
+---------------------------------------
+CUADRA? inicial - confirmadas == final ?  false
+===== CORRIDA 2 =====
+Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+Cajero 7: VENDIDO
+Cajero 5: VENDIDO
+Cajero 8: VENDIDO
+Cajero 3: VENDIDO
+Cajero 1: VENDIDO
+Cajero 9: VENDIDO
+Cajero 6: VENDIDO
+Cajero 4: VENDIDO
+Cajero 10: VENDIDO
+Cajero 2: VENDIDO
+---------------------------------------
+Existencia inicial:   10
+Cajeros:              10
+Ventas confirmadas:   10
+Ventas rechazadas:    0
+Existencia final:     8
+---------------------------------------
+CUADRA? inicial - confirmadas == final ?  false
+===== CORRIDA 3 =====
+Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+Cajero 5: VENDIDO
+Cajero 2: VENDIDO
+Cajero 7: VENDIDO
+Cajero 3: VENDIDO
+Cajero 6: VENDIDO
+Cajero 4: VENDIDO
+Cajero 10: VENDIDO
+Cajero 8: VENDIDO
+Cajero 1: VENDIDO
+Cajero 9: VENDIDO
+---------------------------------------
+Existencia inicial:   10
+Cajeros:              10
+Ventas confirmadas:   10
+Ventas rechazadas:    0
+Existencia final:     7
+---------------------------------------
+CUADRA? inicial - confirmadas == final ?  false
+===== CORRIDA 4 =====
+Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+Cajero 7: VENDIDO
+Cajero 1: VENDIDO
+Cajero 2: VENDIDO
+Cajero 10: VENDIDO
+Cajero 9: VENDIDO
+Cajero 3: VENDIDO
+Cajero 6: VENDIDO
+Cajero 8: VENDIDO
+Cajero 5: VENDIDO
+Cajero 4: VENDIDO
+---------------------------------------
+Existencia inicial:   10
+Cajeros:              10
+Ventas confirmadas:   10
+Ventas rechazadas:    0
+Existencia final:     8
+---------------------------------------
+CUADRA? inicial - confirmadas == final ?  false
+===== CORRIDA 5 =====
+Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+Cajero 4: VENDIDO
+Cajero 7: VENDIDO
+Cajero 9: VENDIDO
+Cajero 8: VENDIDO
+Cajero 10: VENDIDO
+Cajero 6: VENDIDO
+Cajero 1: VENDIDO
+Cajero 5: VENDIDO
+Cajero 2: VENDIDO
+Cajero 3: VENDIDO
+---------------------------------------
+Existencia inicial:   10
+Cajeros:              10
+Ventas confirmadas:   10
+Ventas rechazadas:    0
+Existencia final:     7
+---------------------------------------
+CUADRA? inicial - confirmadas == final ?  false

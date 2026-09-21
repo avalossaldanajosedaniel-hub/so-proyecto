@@ -14,3 +14,6 @@ Ya pude clonar tu repo con tu usuario de GitHub. Buena noticia: revisando tus co
 
 ### Nota rapida semana 4 (2026-09-21)
 No veo commits de la semana 4 (`s04 bloque 1`/`s04 bloque 2`). Veo que ya subiste la semana 5; la 4 es la que le pone hilos a tu servidor, asi que conviene ponerla al dia. Si tuviste un problema, cuentamelo para que quede en la bitacora.
+
+### Nota rapida semana 5 (2026-09-21)
+Bloque 1 y bloque 2 presentes, y tus cinco corridas (existencia final 9, 8, 7, 8, 7) son coherentes con tu evidencia. Tres detalles. (1) El sintoma que te salio es el segundo, descuentos perdidos (10 confirmadas y quedan 7), no una sobreventa: nunca se vendio mas de lo que habia. (2) La tabla de intercalado del bloque 1 quedo mezclada con otra (a la mitad del texto del costo aparecen renglones con stock 5 y 4); deja una sola, limpia. (3) En la seccion critica describes donde empieza y termina, pero falta pegar el fragmento de codigo de tu `vender`. Ademas, borra `src/GestorInventario.java.save` (es respaldo de nano).

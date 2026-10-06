@@ -4,13 +4,13 @@ public class PruebaCarrera {
 
         // TODO: cambia estos valores por un producto de TU catalogo
         String producto = "paracetamol";
-        int existenciaInicial = 10;
-        int cajeros = 10;
+        int existenciaInicial = 100;
+        int cajeros = 500;
 
         GestorInventario inventario = new GestorInventario();
         inventario.agregar(producto, existenciaInicial);
 
-        Thread[] hilos = new Thread[cajeros];
+        
 
         // Cada cajero intenta comprar UNA pieza.
         for (int i = 0; i < cajeros; i++) {

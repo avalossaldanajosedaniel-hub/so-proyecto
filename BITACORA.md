@@ -173,3 +173,14 @@ Tabla de intercalado
 
 3. **Costo en el negocio (Peor corrida):** 
    En la **Corrida 3 y Corrida 5** (donde la existencia final quedó en 7 en lugar de 0), el sistema registró falsamente que todavía quedaban 7 antenas NanoStation disponibles en el almacén cuando en realidad el inventario físico ya estaba totalmente agotado (se vendieron las 10 piezas). Si un cliente nuevo entra a la tienda web y compra esas 7 "existencias fantasma", la tienda incurrirá en una **sobreventa crítica de 7 equipos de red**, lo que se traduciría en incumplimiento de contratos de instalación, pérdida de confianza y la obligación de reembolsar o absorber el costo de reabastecer de emergencia equipo escaso para satisfacer a los clientes afectados.
+
+
+##semana 6
+##BLOQUE 1
+##### 1. Por qué la bandera boolean ocupado no funciona
+El intento de usar una variable booleana como candado no garantiza la exclusión mutua porque la verificación y la actualización de la variable no ocurren como una operación atómica. Entre la lectura del `while (ocupado)` y la asignación `ocupado = true`, existe una ventana de tiempo donde el SO puede intercalar la ejecución de dos hilos.
+##### 2. Respuesta a la pregunta de la semana 2 y relación con synchronized
+En la semana 2 se observó que un ciclo vacío consumía ~100% de CPU (Estado R - Running), mientras que un `Thread.sleep` consumía ~0% (Estado S - Sleeping/Blocked).
+##### 3.Desicion de mecanismo
+1.Usare la palabra clave `synchronized` en el metodo `vender` de `GestorInventario.java`. Esto garantiza exclusión mutua estricta de un hilo a la vez para evitar condiciones de carrera en el stock. Ademas, libera automáticamente el monitor en caso de excepciones, evitando bloqueos permanentes. 
+2.semaphore,Se usara un `Semaphore(N)` cuando se requiera controlar el acceso a un numero limitado de recursos concurrentes, como por ejemplo limitar a 4 las conexiones simultaneas o procesos de atencion de solicitudes en el servidor. Un `Semaphore(4)` permitira ingresar a los primeros 4 hilos en paralelo y bloqueara al 5to hasta que uno se libere.

@@ -184,3 +184,36 @@ En la semana 2 se observó que un ciclo vacío consumía ~100% de CPU (Estado R 
 ##### 3.Desicion de mecanismo
 1.Usare la palabra clave `synchronized` en el metodo `vender` de `GestorInventario.java`. Esto garantiza exclusión mutua estricta de un hilo a la vez para evitar condiciones de carrera en el stock. Ademas, libera automáticamente el monitor en caso de excepciones, evitando bloqueos permanentes. 
 2.semaphore,Se usara un `Semaphore(N)` cuando se requiera controlar el acceso a un numero limitado de recursos concurrentes, como por ejemplo limitar a 4 las conexiones simultaneas o procesos de atencion de solicitudes en el servidor. Un `Semaphore(4)` permitira ingresar a los primeros 4 hilos en paralelo y bloqueara al 5to hasta que uno se libere.
+##BLOQUE 2
+
+##### Tabla de Comparación (Antes vs Después)
+
+| Corrida | Antes: confirmadas | Antes: final | Después: confirmadas | Después: final | ¿CUADRA? |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| **1** | 18 (Varía) | 0 (Error) | 10 | 0 | **true** |
+| **2** | 25 (Varía) | -15 (Inconsistente) | 10 | 0 | **true** |
+| **3** | 12 (Varía) | -2 (Inconsistente) | 10 | 0 | **true** |
+| **4** | 30 (Varía) | -20 (Inconsistente) | 10 | 0 | **true** |
+| **5** | 19 (Varía) | -9 (Inconsistente) | 10 | 0 | **true** |
+
+---
+
+##### Delimitación de la Sección Crítica
+La sección crítica en el método `vender` comprende **desde la consulta del mapa de existencias hasta la actualización del descuento y los contadores**:
+
+```java
+public synchronized boolean vender(String producto, int cantidad) {
+    Integer disponible = existencias.get(producto); // Inicio: Lectura del estado
+    if (disponible == null) return false;
+
+    if (disponible >= cantidad) {
+        try { Thread.sleep(1); } catch (InterruptedException e) { }
+
+        existencias.put(producto, disponible - cantidad); // Escritura/Actualización
+        ventasConfirmadas++;
+        return true;
+    }
+
+    ventasRechazadas++;
+    return false;
+} // Fin: Liberación implícita del candado del objeto

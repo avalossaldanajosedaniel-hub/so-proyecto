@@ -17,3 +17,6 @@ No veo commits de la semana 4 (`s04 bloque 1`/`s04 bloque 2`). Veo que ya subist
 
 ### Nota rapida semana 5 (2026-09-21)
 Bloque 1 y bloque 2 presentes, y tus cinco corridas (existencia final 9, 8, 7, 8, 7) son coherentes con tu evidencia. Tres detalles. (1) El sintoma que te salio es el segundo, descuentos perdidos (10 confirmadas y quedan 7), no una sobreventa: nunca se vendio mas de lo que habia. (2) La tabla de intercalado del bloque 1 quedo mezclada con otra (a la mitad del texto del costo aparecen renglones con stock 5 y 4); deja una sola, limpia. (3) En la seccion critica describes donde empieza y termina, pero falta pegar el fragmento de codigo de tu `vender`. Ademas, borra `src/GestorInventario.java.save` (es respaldo de nano).
+
+### Nota rápida (2026-10-06)
+Tu `evidencias/carrera_resuelta.txt` tiene diez líneas de `true` y cinco de `false`: parece que quedaron mezcladas dos salidas (la de antes y la de después). Deja solo las cinco corridas de la versión protegida, y borra `BITACORA.md.save` y `src/GestorInventario.java.save` si existen (son respaldos de nano).

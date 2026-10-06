@@ -217,3 +217,40 @@ public synchronized boolean vender(String producto, int cantidad) {
     ventasRechazadas++;
     return false;
 } // Fin: Liberación implícita del candado del objeto
+
+##semana 6
+##BLOQUE 1
+
+## Semana 7 - Bloqueos y Sincronización (U2)
+
+### Antes de la Clase (Aprendizaje Invertido)
+
+#### Bloque 1: Las cuatro condiciones de Coffman
+
+##### 1. Escenario de Interbloqueo en DanyNetwork
+En el servidor de ventas de videovigilancia (**DanyNetwork**), se procesan transacciones de clientes que impactan tanto las existencias en inventario como el registro contable/auditoría en el archivo de log del sistema.
+
+Si dos hilos solicitan acceso concurrente a los objetos compartidos `GestorInventario` (Candado 1) y `RegistroLog` (Candado 2) en orden inverso, se genera un interbloqueo (*deadlock*):
+
+- **Hilo A (Pedido 1 - Venta de NVR Tiandy):**
+  1. Adquiere el candado de `GestorInventario`.
+  2. Intenta actualizar el stock.
+  3. Solicita el candado de `RegistroLog` para asentar el recibo de la venta.
+  *Queda bloqueado esperando el candado de `RegistroLog`.*
+
+- **Hilo B (Pedido 2 - Reporte de Auditoría/Log):**
+  1. Adquiere el candado de `RegistroLog`.
+  2. Escribe el encabezado del evento de auditoría.
+  3. Solicita el candado de `GestorInventario` para corroborar el stock remanente de cámaras.
+  *Queda bloqueado esperando el candado de `GestorInventario`.*
+
+**Diagrama de Intercalación Fallida:**
+```text
+Hilo A (Pedido NVR)                   Hilo B (Reporte Auditoría)
+--------------------                   --------------------------
+Toma candado INVENTARIO                Toma candado LOG
+   │                                      │
+   ▼                                      ▼
+Pide candado LOG                       Pide candado INVENTARIO
+   │                                      │
+   └──► BLOQUEADO (espera a B)            └──► BLOQUEADO (espera a A)

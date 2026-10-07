@@ -223,8 +223,6 @@ public synchronized boolean vender(String producto, int cantidad) {
 
 ## Semana 7 - Bloqueos y Sincronización (U2)
 
-### Antes de la Clase (Aprendizaje Invertido)
-
 #### Bloque 1: Las cuatro condiciones de Coffman
 
 ##### 1. Escenario de Interbloqueo en DanyNetwork

@@ -216,7 +216,7 @@ public synchronized boolean vender(String producto, int cantidad) {
 
     ventasRechazadas++;
     return false;
-} // Fin: Liberación implícita del candado del objeto
+} // Fin: Liberación implícita del candado del objeto```
 
 ##semana 6
 ##BLOQUE 1
@@ -243,7 +243,7 @@ Si dos hilos solicitan acceso concurrente a los objetos compartidos `GestorInven
   *Queda bloqueado esperando el candado de `GestorInventario`.*
 
 **Diagrama de Intercalación Fallida:**
-```text
+text
 Hilo A (Pedido NVR)                   Hilo B (Reporte Auditoría)
 --------------------                   --------------------------
 Toma candado INVENTARIO                Toma candado LOG

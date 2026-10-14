@@ -250,8 +250,22 @@ Pide candado LOG                       Pide candado INVENTARIO
    │                                      │
    └──► BLOQUEADO (espera a B)            └──► BLOQUEADO (espera a A)
 
+##Bloque2
+### Antes de la clase: Bloque 2 - Diagnóstico de Interbloqueo (Deadlock)
 
+#### 1. Evidencia del ciclo en `jstack` y explicación de hilos
+Fragmento clave extraído de `evidencias/deadlock.txt` que demuestra el interbloqueo real de la ejecución:
 
+```text
+"hilo-1" #20 [18671] prio=5 os_prio=0 ... java.lang.Thread.State: BLOCKED (on object monitor)
+        at PruebaBloqueo.lambda$main$0(PruebaBloqueo.java:16)
+- waiting to lock <0x000000077a4142e0> (a java.lang.Object)
+- locked <0x000000077a4142d0> (a java.lang.Object)
+
+"hilo-2" #21 [18672] prio=5 os_prio=0 ... java.lang.Thread.State: BLOCKED (on object monitor)
+        at PruebaBloqueo.lambda$main$1(PruebaBloqueo.java:27)
+- waiting to lock <0x000000077a4142d0> (a java.lang.Object)
+- locked <0x000000077a4142e0> (a java.lang.Object)```
 ##Bloque extra
 | Criterio | Orden global de candados | tryLock con timeout |
 | :--- | :--- | :--- |
@@ -260,3 +274,10 @@ Pide candado LOG                       Pide candado INVENTARIO
 | **Costo en rendimiento** | Mínimo (bloqueo nativo eficiente a nivel de monitor). | Mayor (genera sobrecarga si hay muchos hilos reintentando constantemente). |
 | **Funciona con código de terceros?** | No (requiere control absoluto sobre el orden de los candados). | Sí (permite abortar la espera si una biblioteca externa retiene el recurso). |
 | **Qué problema nuevo introduce** | Ninguno (siempre que se respete estrictamente la jerarquía acordada). | Livelock (si los hilos chocan y reintentan en bucle) y complejidad en los finally. |
+####Semana 8
+### Antes de la clase:
+Necesidad                                       Qué mecanismo uso              Por qué
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Avisarle a mi servidor que se apague            Señales (SIGTERM / Ctrl + C)   Porque es un aviso rápido y ligero que permite activar el shutdown hook para un cierre ordenado.[cite: 1]
+Mandarle pedidos desde el generador             Tuberías (Pipes |)             Porque transportan un flujo continuo de bytes en un solo sentido conectando la salida de uno con la entrada del otro de forma sincronizada por el kernel.[cite: 1]
+Que un cajero en otra máquina me mande pedidos  Sockets de red                 Porque las tuberías solo sirven localmente entre procesos emparentados; cuando las máquinas son distintas, se requiere una conexión basada en red.[cite: 1]

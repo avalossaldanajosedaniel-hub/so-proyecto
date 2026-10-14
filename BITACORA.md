@@ -218,9 +218,6 @@ public synchronized boolean vender(String producto, int cantidad) {
     return false;
 } // Fin: Liberación implícita del candado del objeto```
 
-##semana 6
-##BLOQUE 1
-
 ## Semana 7 - Bloqueos y Sincronización (U2)
 
 #### Bloque 1: Las cuatro condiciones de Coffman
@@ -252,3 +249,14 @@ Toma candado INVENTARIO                Toma candado LOG
 Pide candado LOG                       Pide candado INVENTARIO
    │                                      │
    └──► BLOQUEADO (espera a B)            └──► BLOQUEADO (espera a A)
+
+
+
+##Bloque extra
+| Criterio | Orden global de candados | tryLock con timeout |
+| :--- | :--- | :--- |
+| **Previene o detecta?** | Previene (Evita la espera circular desde el diseño). | Evita/Recupera (Reintenta si el recurso está ocupado mediante tiempo límite). |
+| **Qué pasa cuando hay competencia** | Los hilos se bloquean ordenadamente esperando su turno sin consumir CPU. | Los hilos sueltan lo que tienen, esperan un lapso y vuelven a competir. |
+| **Costo en rendimiento** | Mínimo (bloqueo nativo eficiente a nivel de monitor). | Mayor (genera sobrecarga si hay muchos hilos reintentando constantemente). |
+| **Funciona con código de terceros?** | No (requiere control absoluto sobre el orden de los candados). | Sí (permite abortar la espera si una biblioteca externa retiene el recurso). |
+| **Qué problema nuevo introduce** | Ninguno (siempre que se respete estrictamente la jerarquía acordada). | Livelock (si los hilos chocan y reintentan en bucle) y complejidad en los finally. |

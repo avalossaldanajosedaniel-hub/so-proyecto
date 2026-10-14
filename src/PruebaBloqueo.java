@@ -1,40 +1,38 @@
-// PruebaBloqueo.java - dos hilos que se abrazan hasta morir
+// PruebaBloqueo.java - simulación de interbloqueo entre BD y Log
 public class PruebaBloqueo {
 
-    // Dos recursos distintos. En tu servidor serian el inventario y el log.
-    static final Object INVENTARIO = new Object();
-    static final Object LOG = new Object();
+    static final Object BASE_DATOS = new Object();
+    static final Object LOG_SISTEMA = new Object();
 
     public static void main(String[] args) {
-
         System.out.println("PID " + ProcessHandle.current().pid());
 
-        Thread cajero1 = new Thread(() -> {
-            synchronized (INVENTARIO) {
-                System.out.println("cajero-1: tomo INVENTARIO");
-                dormir(500);                       // le doy tiempo al otro
-                System.out.println("cajero-1: quiero LOG");
-                synchronized (LOG) {
-                    System.out.println("cajero-1: tengo los dos");
+        Thread hilo1 = new Thread(() -> {
+            synchronized (BASE_DATOS) {
+                System.out.println("hilo-1: tomo BASE_DATOS");
+                dormir(500);
+                System.out.println("hilo-1: quiero LOG_SISTEMA");
+                synchronized (LOG_SISTEMA) {
+                    System.out.println("hilo-1: tengo los dos");
                 }
             }
-        }, "cajero-1");
+        }, "hilo-1");
 
-        Thread cajero2 = new Thread(() -> {
-            synchronized (INVENTARIO) {
-	 System.out.println("cajero-2: tomo INVENTARIO");
-	 	dormir(500);
-   		 synchronized (LOG) {
-        		System.out.println("cajero-2: tengo los dos");
-	}
-		}
+        Thread hilo2 = new Thread(() -> {
+            synchronized (LOG_SISTEMA) { // Orden invertido a propósito
+                System.out.println("hilo-2: tomo LOG_SISTEMA");
+                dormir(500);
+                System.out.println("hilo-2: quiero BASE_DATOS");
+                synchronized (BASE_DATOS) {
+                    System.out.println("hilo-2: tengo los dos");
+                }
+            }
+        }, "hilo-2");
 
-        }, "cajero-2");
+        hilo1.start();
+        hilo2.start();
 
-        cajero1.start();
-        cajero2.start();
-
-        System.out.println("Los dos hilos arrancaron. Si no ves 'tengo los dos', hay bloqueo.");
+        System.out.println("Hilos iniciados. Si no ves 'tengo los dos', hay bloqueo.");
     }
 
     static void dormir(long ms) {

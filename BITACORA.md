@@ -173,7 +173,7 @@ public synchronized boolean vender(String producto, int cantidad) {
 
     ventasRechazadas++;
     return false;
-} // Fin: Liberación implícita del candado del objeto```
+} 
 
 # Semana 7 - Bloqueos y Sincronización (U2)
 

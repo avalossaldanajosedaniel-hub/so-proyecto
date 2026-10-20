@@ -1,0 +1,20 @@
+=== SIGTERM ===
+Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+[11:19:29] Servidor de DanyNetwork listo. PID 39065
+[11:19:29] Directorio de trabajo: /home/kali/so-proyecto/src
+[11:19:30] Senal de apagado recibida. No se aceptan pedidos nuevos.
+[11:19:30] Resumen final:
+[11:19:30]   Pedidos recibidos:  0
+[11:19:30] Servidor apagado ordenadamente.
+=== SIGINT ===
+Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+[11:19:33] Servidor de DanyNetwork listo. PID 39121
+[11:19:33] Directorio de trabajo: /home/kali/so-proyecto/src
+[11:19:34] Senal de apagado recibida. No se aceptan pedidos nuevos.
+[11:19:34] Resumen final:
+[11:19:34]   Pedidos recibidos:  0
+[11:19:34] Servidor apagado ordenadamente.
+=== SIGKILL ===
+Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+[11:19:37] Servidor de DanyNetwork listo. PID 39177
+[11:19:37] Directorio de trabajo: /home/kali/so-proyecto/src

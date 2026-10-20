@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -5,7 +7,25 @@ public class ServidorPedidos {
 
     static final String NEGOCIO = "DanyNetwork";
 
-    public static void main(String[] args) throws InterruptedException {
+    // Bandera compartida: los hilos la consultan para saber si deben seguir.
+    static volatile boolean apagando = false;
+
+    // Variables de ejemplo para el resumen final
+    static int contador = 0;
+
+    public static void main(String[] args) throws Exception {
+
+        // Registrar el Shutdown Hook al inicio del main, antes del ciclo
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+
+            apagando = true;
+            registrar("Senal de apagado recibida. No se aceptan pedidos nuevos.");
+
+            registrar("Resumen final:");
+            registrar("  Pedidos recibidos:  " + contador);
+
+            registrar("Servidor apagado ordenadamente.");
+        }, "apagado"));
 
         long pid = ProcessHandle.current().pid();
 
@@ -14,7 +34,10 @@ public class ServidorPedidos {
         String directorioActual = System.getProperty("user.dir");
         registrar("Directorio de trabajo: " + directorioActual);
 
-        while (true) {
+        // Ejemplo de llamada para probar la tubería
+        // recibirDelGenerador(10);
+
+        while (!apagando) {
             Thread.sleep(5000);
             registrar("En espera de pedidos");
         }
@@ -23,5 +46,32 @@ public class ServidorPedidos {
     static void registrar(String mensaje) {
         String hora = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
         System.out.println("[" + hora + "] " + mensaje);
+    }
+
+    // Lanza al generador como hijo y lee sus pedidos por la tuberia.
+    static void recibirDelGenerador(int cuantos) throws Exception {
+
+        ProcessBuilder pb = new ProcessBuilder("java", "GeneradorPedidos",
+                                               String.valueOf(cuantos));
+        pb.redirectErrorStream(true);
+
+        Process hijo = pb.start();
+        registrar("Generador lanzado con PID " + hijo.pid());
+
+        // ESTO es la tuberia: la salida del hijo es un flujo que yo leo.
+        try (BufferedReader tuberia = new BufferedReader(
+                 new InputStreamReader(hijo.getInputStream()))) {
+
+            String linea;
+            while ((linea = tuberia.readLine()) != null) {
+                // TODO: filtra las lineas que no sean pedidos (las de "arrancado"
+                //       y "termina") y manda las buenas a atender() en un hilo,
+                //       igual que haces con las que llegan por consola.
+                registrar("Por la tuberia llego: " + linea);
+            }
+        }
+
+        int salida = hijo.waitFor();
+        registrar("El generador termino con codigo " + salida);
     }
 }

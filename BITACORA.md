@@ -227,10 +227,17 @@ Fragmento clave extraído de `evidencias/deadlock.txt` que demuestra el interblo
 
 # Semana 8
 
-## Antes de la clase: Mecanismos de Comunicación y Control
+## Antes de la clase:
+SIGKILL: no se puede atrapar por que SIGKILL lo ejecuta el kernel sobre el preceso practicamente lo mata, lo deja sin recursos y muere
+ORDEN CORRECTO PARA APAGAR:
+1. **Bloquear la entrada de nuevas solicitudes:** Cerrar el flujo de lectura (o el socket de red) para rechazar conexiones o pedidos entrantes adicionales.
+2. **Concluir las ventas en curso:** Permitir que los hilos activos procesen y validen los pedidos actualmente en memoria sin interrumpir transacciones a la mitad.
+3. **Flush de logs y persistencia de estado:** Vaciar los buffers en disco escribiendo todas las transacciones confirmadas en el archivo de auditoría (`RegistroLog`), actualizar los archivos de existencias e inventarios, y cerrar formalmente los descriptores de archivos.
+4. **Emisión de informe final y salida:** Imprimir en la consola o log el resumen de ventas procesadas, rechazadas y el estado final del sistema antes de invocar el cierre definitivo del proceso.
 
+TABLA DE MECANISMOS:
 | Necesidad | Qué mecanismo uso | Por qué |
 | :--- | :--- | :--- |
-| **Avisarle a mi servidor que se apague** | Señales (`SIGTERM` / `Ctrl + C`) | Porque es un aviso rápido y ligero que permite activar el *shutdown hook* para un cierre ordenado. |
-| **Mandarle pedidos desde el generador** | Tuberías (Pipes `\|`) | Porque transportan un flujo continuo de bytes en un solo sentido conectando la salida de uno con la entrada del otro de forma sincronizada por el kernel. |
-| **Que un cajero en otra máquina me mande pedidos** | Sockets de red | Porque las tuberías solo sirven localmente entre procesos emparentados; cuando las máquinas son distintas, se requiere una conexión basada en red. |
+| **Avisarle a mi servidor que se apague** | Señales (`SIGTERM` / `SIGINT`) | Es una interrupción por software rápida que el kernel entrega al proceso, activando el *shutdown hook* para un cierre ordenado. |
+| **Mandarle pedidos desde el generador** | Tuberías anónimas (Pipes `\|`) | Conectan la salida estándar de un proceso padre con la entrada estándar de un proceso hijo en un flujo continuo de bytes en un solo sentido con sincronización gestionada por el kernel. |
+| **Que un cajero en otra máquina me mande pedidos** | Sockets de red | Las tuberías están limitadas a procesos emparentados en la misma máquina local; para enviar información a través de la red entre diferentes dispositivos se requieren sockets. |

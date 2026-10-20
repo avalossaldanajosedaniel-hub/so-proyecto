@@ -1,0 +1,8 @@
+Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+[11:37:16] Servidor de DanyNetwork listo. PID 47801
+[11:37:16] Directorio de trabajo: /home/kali/so-proyecto/src
+[11:37:21] En espera de pedidos
+[11:37:21] Senal de apagado recibida. No se aceptan pedidos nuevos.
+[11:37:21] Resumen final:
+[11:37:21]   Pedidos recibidos:  0
+[11:37:21] Servidor apagado ordenadamente.

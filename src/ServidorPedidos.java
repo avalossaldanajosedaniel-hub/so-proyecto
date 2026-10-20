@@ -1,4 +1,6 @@
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -10,7 +12,7 @@ public class ServidorPedidos {
     // Bandera compartida: los hilos la consultan para saber si deben seguir.
     static volatile boolean apagando = false;
 
-    // Variables de ejemplo para el resumen final
+    // Contador de pedidos recibidos
     static int contador = 0;
 
     public static void main(String[] args) throws Exception {
@@ -34,8 +36,30 @@ public class ServidorPedidos {
         String directorioActual = System.getProperty("user.dir");
         registrar("Directorio de trabajo: " + directorioActual);
 
-        // Ejemplo de llamada para probar la tubería
-        // recibirDelGenerador(10);
+        // Lectura de la entrada estándar (Tubería anónima: java GeneradorPedidos | java ServidorPedidos)
+        try (BufferedReader entradaEstandard = new BufferedReader(new InputStreamReader(System.in))) {
+            String linea;
+            while (!apagando && entradaEstandard.ready() && (linea = entradaEstandard.readLine()) != null) {
+                contador++;
+                registrar("Por la tuberia llego: " + linea);
+            }
+        } catch (Exception e) {
+            // Continuar si no hay tubería anónima conectada
+        }
+
+        // Lectura de Tubería con nombre (FIFO) si existe el archivo
+        File archivoFifo = new File("datos/cajero.pipe");
+        if (archivoFifo.exists()) {
+            try (BufferedReader fifo = new BufferedReader(new FileReader(archivoFifo))) {
+                String linea;
+                while (!apagando && (linea = fifo.readLine()) != null) {
+                    contador++;
+                    registrar("Del FIFO: " + linea);
+                }
+            } catch (Exception e) {
+                registrar("Error leyendo FIFO: " + e.getMessage());
+            }
+        }
 
         while (!apagando) {
             Thread.sleep(5000);
@@ -64,9 +88,7 @@ public class ServidorPedidos {
 
             String linea;
             while ((linea = tuberia.readLine()) != null) {
-                // TODO: filtra las lineas que no sean pedidos (las de "arrancado"
-                //       y "termina") y manda las buenas a atender() en un hilo,
-                //       igual que haces con las que llegan por consola.
+                contador++;
                 registrar("Por la tuberia llego: " + linea);
             }
         }

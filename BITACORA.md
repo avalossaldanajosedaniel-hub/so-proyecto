@@ -241,3 +241,7 @@ TABLA DE MECANISMOS:
 | **Avisarle a mi servidor que se apague** | Señales (`SIGTERM` / `SIGINT`) | Es una interrupción por software rápida que el kernel entrega al proceso, activando el *shutdown hook* para un cierre ordenado. |
 | **Mandarle pedidos desde el generador** | Tuberías anónimas (Pipes `\|`) | Conectan la salida estándar de un proceso padre con la entrada estándar de un proceso hijo en un flujo continuo de bytes en un solo sentido con sincronización gestionada por el kernel. |
 | **Que un cajero en otra máquina me mande pedidos** | Sockets de red | Las tuberías están limitadas a procesos emparentados en la misma máquina local; para enviar información a través de la red entre diferentes dispositivos se requieren sockets. |
+
+PEDIDOS PERDIDOS:
+**Con SIGTERM:** Se perdieron `0` pedidos (o los estrictamente no iniciados), ya que el servidor completó el vaciado de su cola de trabajo de forma ordenada gracias al cierre limpio.
+  * **Con SIGKILL:** Se perdieron una cantidad considerable de pedidos en curso, ya que el proceso fue interrumpido de golpe en plena transacción de inventario sin oportunidad de vaciar el búfer ni generar el reporte final.

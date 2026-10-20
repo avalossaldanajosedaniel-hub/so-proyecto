@@ -158,7 +158,7 @@ Ya tenía instalada una máquina virtual con Linux. Esperaré a saber cuáles so
 | **5** | 19 (Varía) | -9 (Inconsistente) | 10 | 0 | **true** |
 
 #### Delimitación de la Sección Crítica (`synchronized`)
-```java
+java
 public synchronized boolean vender(String producto, int cantidad) {
     Integer disponible = existencias.get(producto); // Inicio: Lectura del estado
     if (disponible == null) return false;

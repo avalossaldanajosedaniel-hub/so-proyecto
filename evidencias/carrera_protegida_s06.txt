@@ -1,0 +1,296 @@
+Prueba 1 - Cajero 31: RECHAZADO
+Prueba 1 - Cajero 8: RECHAZADO
+Prueba 1 - Cajero 9: RECHAZADO
+Prueba 1 - Cajero 10: RECHAZADO
+Prueba 1 - Cajero 12: VENDIDO
+Prueba 1 - Cajero 14: RECHAZADO
+Prueba 1 - Cajero 7: VENDIDO
+Prueba 1 - Cajero 43: RECHAZADO
+Prueba 1 - Cajero 42: RECHAZADO
+Prueba 1 - Cajero 38: RECHAZADO
+Prueba 1 - Cajero 25: RECHAZADO
+Prueba 1 - Cajero 39: RECHAZADO
+Prueba 1 - Cajero 36: RECHAZADO
+Prueba 1 - Cajero 17: RECHAZADO
+Prueba 1 - Cajero 33: RECHAZADO
+Prueba 1 - Cajero 18: RECHAZADO
+Prueba 1 - Cajero 2: VENDIDO
+Prueba 1 - Cajero 34: RECHAZADO
+Prueba 1 - Cajero 21: RECHAZADO
+Prueba 1 - Cajero 37: RECHAZADO
+Prueba 1 - Cajero 27: VENDIDO
+Prueba 1 - Cajero 1: VENDIDO
+Prueba 1 - Cajero 35: RECHAZADO
+Prueba 1 - Cajero 20: VENDIDO
+Prueba 1 - Cajero 45: RECHAZADO
+Prueba 1 - Cajero 46: RECHAZADO
+Prueba 1 - Cajero 11: RECHAZADO
+Prueba 1 - Cajero 29: RECHAZADO
+Prueba 1 - Cajero 41: RECHAZADO
+Prueba 1 - Cajero 24: RECHAZADO
+Prueba 1 - Cajero 22: RECHAZADO
+Prueba 1 - Cajero 47: RECHAZADO
+Prueba 1 - Cajero 5: VENDIDO
+Prueba 1 - Cajero 3: VENDIDO
+Prueba 1 - Cajero 4: VENDIDO
+Prueba 1 - Cajero 40: RECHAZADO
+Prueba 1 - Cajero 28: RECHAZADO
+Prueba 1 - Cajero 6: VENDIDO
+Prueba 1 - Cajero 23: RECHAZADO
+Prueba 1 - Cajero 30: RECHAZADO
+Prueba 1 - Cajero 26: RECHAZADO
+Prueba 1 - Cajero 16: RECHAZADO
+Prueba 1 - Cajero 19: RECHAZADO
+Prueba 1 - Cajero 50: RECHAZADO
+Prueba 1 - Cajero 15: RECHAZADO
+Prueba 1 - Cajero 13: RECHAZADO
+Prueba 1 - Cajero 44: RECHAZADO
+Prueba 1 - Cajero 32: RECHAZADO
+Prueba 1 - Cajero 49: RECHAZADO
+Prueba 1 - Cajero 48: RECHAZADO
+--------------------------------
+Prueba: 1
+Existencia inicial: 10
+Cajeros: 50
+Confirmadas: 10
+Rechazadas: 40
+Existencia final: 0
+CUADRA: SI
+--------------------------------
+Prueba 2 - Cajero 1: VENDIDO
+Prueba 2 - Cajero 9: VENDIDO
+Prueba 2 - Cajero 8: VENDIDO
+Prueba 2 - Cajero 7: VENDIDO
+Prueba 2 - Cajero 5: VENDIDO
+Prueba 2 - Cajero 6: VENDIDO
+Prueba 2 - Cajero 4: VENDIDO
+Prueba 2 - Cajero 3: VENDIDO
+Prueba 2 - Cajero 2: VENDIDO
+Prueba 2 - Cajero 50: VENDIDO
+Prueba 2 - Cajero 48: RECHAZADO
+Prueba 2 - Cajero 43: RECHAZADO
+Prueba 2 - Cajero 49: RECHAZADO
+Prueba 2 - Cajero 47: RECHAZADO
+Prueba 2 - Cajero 46: RECHAZADO
+Prueba 2 - Cajero 40: RECHAZADO
+Prueba 2 - Cajero 39: RECHAZADO
+Prueba 2 - Cajero 45: RECHAZADO
+Prueba 2 - Cajero 36: RECHAZADO
+Prueba 2 - Cajero 38: RECHAZADO
+Prueba 2 - Cajero 44: RECHAZADO
+Prueba 2 - Cajero 35: RECHAZADO
+Prueba 2 - Cajero 37: RECHAZADO
+Prueba 2 - Cajero 34: RECHAZADO
+Prueba 2 - Cajero 33: RECHAZADO
+Prueba 2 - Cajero 42: RECHAZADO
+Prueba 2 - Cajero 41: RECHAZADO
+Prueba 2 - Cajero 25: RECHAZADO
+Prueba 2 - Cajero 32: RECHAZADO
+Prueba 2 - Cajero 23: RECHAZADO
+Prueba 2 - Cajero 31: RECHAZADO
+Prueba 2 - Cajero 21: RECHAZADO
+Prueba 2 - Cajero 20: RECHAZADO
+Prueba 2 - Cajero 19: RECHAZADO
+Prueba 2 - Cajero 30: RECHAZADO
+Prueba 2 - Cajero 15: RECHAZADO
+Prueba 2 - Cajero 14: RECHAZADO
+Prueba 2 - Cajero 13: RECHAZADO
+Prueba 2 - Cajero 12: RECHAZADO
+Prueba 2 - Cajero 29: RECHAZADO
+Prueba 2 - Cajero 27: RECHAZADO
+Prueba 2 - Cajero 28: RECHAZADO
+Prueba 2 - Cajero 26: RECHAZADO
+Prueba 2 - Cajero 24: RECHAZADO
+Prueba 2 - Cajero 10: RECHAZADO
+Prueba 2 - Cajero 22: RECHAZADO
+Prueba 2 - Cajero 18: RECHAZADO
+Prueba 2 - Cajero 17: RECHAZADO
+Prueba 2 - Cajero 16: RECHAZADO
+Prueba 2 - Cajero 11: RECHAZADO
+--------------------------------
+Prueba: 2
+Existencia inicial: 10
+Cajeros: 50
+Confirmadas: 10
+Rechazadas: 40
+Existencia final: 0
+CUADRA: SI
+--------------------------------
+Prueba 3 - Cajero 1: VENDIDO
+Prueba 3 - Cajero 6: VENDIDO
+Prueba 3 - Cajero 4: VENDIDO
+Prueba 3 - Cajero 21: VENDIDO
+Prueba 3 - Cajero 3: VENDIDO
+Prueba 3 - Cajero 33: VENDIDO
+Prueba 3 - Cajero 5: VENDIDO
+Prueba 3 - Cajero 2: VENDIDO
+Prueba 3 - Cajero 50: VENDIDO
+Prueba 3 - Cajero 49: VENDIDO
+Prueba 3 - Cajero 47: RECHAZADO
+Prueba 3 - Cajero 48: RECHAZADO
+Prueba 3 - Cajero 44: RECHAZADO
+Prueba 3 - Cajero 46: RECHAZADO
+Prueba 3 - Cajero 43: RECHAZADO
+Prueba 3 - Cajero 45: RECHAZADO
+Prueba 3 - Cajero 41: RECHAZADO
+Prueba 3 - Cajero 37: RECHAZADO
+Prueba 3 - Cajero 42: RECHAZADO
+Prueba 3 - Cajero 34: RECHAZADO
+Prueba 3 - Cajero 36: RECHAZADO
+Prueba 3 - Cajero 40: RECHAZADO
+Prueba 3 - Cajero 39: RECHAZADO
+Prueba 3 - Cajero 31: RECHAZADO
+Prueba 3 - Cajero 29: RECHAZADO
+Prueba 3 - Cajero 28: RECHAZADO
+Prueba 3 - Cajero 38: RECHAZADO
+Prueba 3 - Cajero 26: RECHAZADO
+Prueba 3 - Cajero 25: RECHAZADO
+Prueba 3 - Cajero 35: RECHAZADO
+Prueba 3 - Cajero 32: RECHAZADO
+Prueba 3 - Cajero 30: RECHAZADO
+Prueba 3 - Cajero 24: RECHAZADO
+Prueba 3 - Cajero 27: RECHAZADO
+Prueba 3 - Cajero 17: RECHAZADO
+Prueba 3 - Cajero 23: RECHAZADO
+Prueba 3 - Cajero 22: RECHAZADO
+Prueba 3 - Cajero 18: RECHAZADO
+Prueba 3 - Cajero 13: RECHAZADO
+Prueba 3 - Cajero 14: RECHAZADO
+Prueba 3 - Cajero 20: RECHAZADO
+Prueba 3 - Cajero 19: RECHAZADO
+Prueba 3 - Cajero 7: RECHAZADO
+Prueba 3 - Cajero 11: RECHAZADO
+Prueba 3 - Cajero 12: RECHAZADO
+Prueba 3 - Cajero 16: RECHAZADO
+Prueba 3 - Cajero 15: RECHAZADO
+Prueba 3 - Cajero 10: RECHAZADO
+Prueba 3 - Cajero 9: RECHAZADO
+Prueba 3 - Cajero 8: RECHAZADO
+--------------------------------
+Prueba: 3
+Existencia inicial: 10
+Cajeros: 50
+Confirmadas: 10
+Rechazadas: 40
+Existencia final: 0
+CUADRA: SI
+--------------------------------
+Prueba 4 - Cajero 1: VENDIDO
+Prueba 4 - Cajero 9: VENDIDO
+Prueba 4 - Cajero 8: VENDIDO
+Prueba 4 - Cajero 7: VENDIDO
+Prueba 4 - Cajero 6: VENDIDO
+Prueba 4 - Cajero 5: VENDIDO
+Prueba 4 - Cajero 41: VENDIDO
+Prueba 4 - Cajero 4: VENDIDO
+Prueba 4 - Cajero 3: VENDIDO
+Prueba 4 - Cajero 2: VENDIDO
+Prueba 4 - Cajero 48: RECHAZADO
+Prueba 4 - Cajero 47: RECHAZADO
+Prueba 4 - Cajero 50: RECHAZADO
+Prueba 4 - Cajero 49: RECHAZADO
+Prueba 4 - Cajero 45: RECHAZADO
+Prueba 4 - Cajero 44: RECHAZADO
+Prueba 4 - Cajero 40: RECHAZADO
+Prueba 4 - Cajero 39: RECHAZADO
+Prueba 4 - Cajero 46: RECHAZADO
+Prueba 4 - Cajero 37: RECHAZADO
+Prueba 4 - Cajero 43: RECHAZADO
+Prueba 4 - Cajero 35: RECHAZADO
+Prueba 4 - Cajero 42: RECHAZADO
+Prueba 4 - Cajero 38: RECHAZADO
+Prueba 4 - Cajero 29: RECHAZADO
+Prueba 4 - Cajero 36: RECHAZADO
+Prueba 4 - Cajero 34: RECHAZADO
+Prueba 4 - Cajero 33: RECHAZADO
+Prueba 4 - Cajero 32: RECHAZADO
+Prueba 4 - Cajero 25: RECHAZADO
+Prueba 4 - Cajero 24: RECHAZADO
+Prueba 4 - Cajero 23: RECHAZADO
+Prueba 4 - Cajero 22: RECHAZADO
+Prueba 4 - Cajero 21: RECHAZADO
+Prueba 4 - Cajero 20: RECHAZADO
+Prueba 4 - Cajero 18: RECHAZADO
+Prueba 4 - Cajero 31: RECHAZADO
+Prueba 4 - Cajero 15: RECHAZADO
+Prueba 4 - Cajero 14: RECHAZADO
+Prueba 4 - Cajero 30: RECHAZADO
+Prueba 4 - Cajero 13: RECHAZADO
+Prueba 4 - Cajero 28: RECHAZADO
+Prueba 4 - Cajero 10: RECHAZADO
+Prueba 4 - Cajero 27: RECHAZADO
+Prueba 4 - Cajero 26: RECHAZADO
+Prueba 4 - Cajero 19: RECHAZADO
+Prueba 4 - Cajero 16: RECHAZADO
+Prueba 4 - Cajero 17: RECHAZADO
+Prueba 4 - Cajero 12: RECHAZADO
+Prueba 4 - Cajero 11: RECHAZADO
+--------------------------------
+Prueba: 4
+Existencia inicial: 10
+Cajeros: 50
+Confirmadas: 10
+Rechazadas: 40
+Existencia final: 0
+CUADRA: SI
+--------------------------------
+Prueba 5 - Cajero 3: VENDIDO
+Prueba 5 - Cajero 10: VENDIDO
+Prueba 5 - Cajero 9: VENDIDO
+Prueba 5 - Cajero 8: VENDIDO
+Prueba 5 - Cajero 28: VENDIDO
+Prueba 5 - Cajero 7: VENDIDO
+Prueba 5 - Cajero 42: VENDIDO
+Prueba 5 - Cajero 47: VENDIDO
+Prueba 5 - Cajero 6: VENDIDO
+Prueba 5 - Cajero 5: VENDIDO
+Prueba 5 - Cajero 4: RECHAZADO
+Prueba 5 - Cajero 2: RECHAZADO
+Prueba 5 - Cajero 1: RECHAZADO
+Prueba 5 - Cajero 50: RECHAZADO
+Prueba 5 - Cajero 49: RECHAZADO
+Prueba 5 - Cajero 48: RECHAZADO
+Prueba 5 - Cajero 46: RECHAZADO
+Prueba 5 - Cajero 44: RECHAZADO
+Prueba 5 - Cajero 45: RECHAZADO
+Prueba 5 - Cajero 39: RECHAZADO
+Prueba 5 - Cajero 43: RECHAZADO
+Prueba 5 - Cajero 36: RECHAZADO
+Prueba 5 - Cajero 41: RECHAZADO
+Prueba 5 - Cajero 40: RECHAZADO
+Prueba 5 - Cajero 38: RECHAZADO
+Prueba 5 - Cajero 35: RECHAZADO
+Prueba 5 - Cajero 34: RECHAZADO
+Prueba 5 - Cajero 37: RECHAZADO
+Prueba 5 - Cajero 33: RECHAZADO
+Prueba 5 - Cajero 32: RECHAZADO
+Prueba 5 - Cajero 31: RECHAZADO
+Prueba 5 - Cajero 30: RECHAZADO
+Prueba 5 - Cajero 29: RECHAZADO
+Prueba 5 - Cajero 27: RECHAZADO
+Prueba 5 - Cajero 26: RECHAZADO
+Prueba 5 - Cajero 25: RECHAZADO
+Prueba 5 - Cajero 23: RECHAZADO
+Prueba 5 - Cajero 24: RECHAZADO
+Prueba 5 - Cajero 21: RECHAZADO
+Prueba 5 - Cajero 20: RECHAZADO
+Prueba 5 - Cajero 22: RECHAZADO
+Prueba 5 - Cajero 19: RECHAZADO
+Prueba 5 - Cajero 18: RECHAZADO
+Prueba 5 - Cajero 17: RECHAZADO
+Prueba 5 - Cajero 15: RECHAZADO
+Prueba 5 - Cajero 11: RECHAZADO
+Prueba 5 - Cajero 16: RECHAZADO
+Prueba 5 - Cajero 14: RECHAZADO
+Prueba 5 - Cajero 12: RECHAZADO
+Prueba 5 - Cajero 13: RECHAZADO
+--------------------------------
+Prueba: 5
+Existencia inicial: 10
+Cajeros: 50
+Confirmadas: 10
+Rechazadas: 40
+Existencia final: 0
+CUADRA: SI
+--------------------------------
+RESULTADO: 5 DE 5 PRUEBAS CORRECTAS

@@ -437,6 +437,143 @@ public synchronized boolean vender(String producto, int cantidad) {
     return false;
 } 
 
+# Avance del proyecto — Semana 6
+
+**Proyecto:** DanyNetwork
+
+---
+
+## Exclusión mutua
+
+La **exclusión mutua** permite que solamente un hilo a la vez ejecute una sección crítica. Una solución correcta debe garantizar tres condiciones fundamentales:
+1. **Exclusión mutua**
+2. **Progreso**
+3. **Espera acotada**
+
+---
+
+## Mecanismo utilizado
+
+Elegí `synchronized` en el método `vender()` de `GestorInventario.java`, para proteger conjuntamente:
+* La lectura de existencias.
+* La validación de disponibilidad.
+* El descuento de productos.
+* La actualización de los contadores.
+
+---
+
+## Comparación antes y después
+
+### Semana 5 — Sin protección:
+* **1000** pedidos recibidos.
+* **28** ventas confirmadas.
+* **968** rechazadas contabilizadas.
+* **6** unidades de descuadre total.
+* **4** operaciones perdidas en los contadores.
+
+### Semana 6 — Con protección (`synchronized`):
+* **Prueba de 50 cajeros y 10 piezas:** Cinco ejecuciones totalmente correctas.
+* **Cada ejecución:** 10 ventas confirmadas, 40 rechazadas y existencia final en 0.
+* **Servidor completo:** 200 pedidos recibidos.
+* **28** pedidos confirmados y **172** rechazados.
+* **Descuadre de inventario:** **0** en los ocho productos.
+
+Los resultados muestran que proteger toda la operación de venta evita las inconsistencias observadas en las pruebas anteriores.
+
+---
+
+## Tamaño de la sección crítica
+
+* **Candado demasiado pequeño:** Si se protege únicamente la escritura, dos hilos todavía pueden consultar las mismas existencias al mismo tiempo y confirmar ventas incorrectas.
+* **Candado demasiado grande:** Si se protege todo el procesamiento de un pedido (incluyendo operaciones independientes), los demás hilos pueden permanecer bloqueados innecesariamente perdiendo concurrencia.
+
+> **Regla general:** Proteger toda la operación compartida que debe ser indivisible, evitando bloquear trabajo que no necesita exclusión mutua.
+
+*Pendiente:* Ejecutar y registrar ambos casos para documentarlos como experimentos reales y no solamente como explicación teórica.
+
+---
+
+## Semáforo
+
+DanyNetwork puede representar tres estaciones de preparación mediante `Semaphore(3)`. Cada pedido adquiere un permiso (`acquire()`) al ocupar una estación y lo libera (`release()`) cuando termina.
+
+Esto limita la cantidad de pedidos preparados simultáneamente sin restringir todas las ventas a un solo hilo.
+
+# Evidencias experimentales — Semana 6
+
+**Proyecto:** DanyNetwork
+
+---
+
+## 1. Inventario protegido con exclusión mutua
+
+Se utilizó `synchronized` en el método `vender()` de `GestorInventario.java`, protegiendo en un mismo bloque atómico la consulta, validación, descuento de existencias y actualización de contadores.
+
+La solución se basa en tres propiedades de sincronización: **exclusión mutua**, **progreso** y **espera acotada**.
+
+### Resultados antes de la protección (Semana 5):
+* **1000** pedidos recibidos.
+* **28** ventas confirmadas y **968** rechazadas contabilizadas.
+* **6** unidades de descuadre total.
+* **4** operaciones perdidas en los contadores.
+
+### Resultados después de la protección (Semana 6):
+* **Prueba de 50 cajeros y 10 piezas:** Cinco pruebas ejecutadas; todas terminaron totalmente correctas.
+* **Resultado por prueba:** 10 ventas confirmadas, 40 rechazadas y existencia final en **0**.
+* **Servidor completo:** 200 pedidos recibidos, 28 confirmados y 172 rechazados.
+* **Consistencia:** Los ocho productos del catálogo terminaron con un descuadre de **0**.
+
+---
+
+## 2. Experimento: candado demasiado pequeño
+
+Se protegió únicamente la escritura del stock, dejando la lectura fuera del candado. Como consecuencia, los 50 hilos consultaron las mismas 10 piezas disponibles antes de aplicar la actualización.
+
+### Resultados del experimento:
+* **Stock inicial:** 10
+* **Ventas confirmadas:** 50
+* **Stock final:** 9
+* **Stock esperado:** −40
+* **Descuadre total:** +49
+
+> **Conclusión:** El candado debe proteger la operación completa de lectura, validación y modificación. Proteger únicamente la escritura no evita que los hilos tomen decisiones basadas en información desactualizada.
+
+---
+
+## 3. Experimento: candado demasiado grande
+
+Se midió el rendimiento comparando 20 hilos ejecutando una tarea simulación de 100 ms de duración bajo dos enfoques:
+
+| Modalidad | Tiempo de ejecución |
+| :--- | :---: |
+| **Todo el trabajo sincronizado** | 2026 ms |
+| **Trabajo independiente sin bloqueo** | 105 ms |
+
+La ejecución con el candado sobredimensionado tardó aproximadamente **19.3 veces más** que la ejecución concurrente óptima.
+
+> **Conclusión:** No se deben bloquear operaciones independientes. La sección crítica debe ser lo suficientemente amplia para garantizar la consistencia de los datos, pero no más grande de lo estrictamente necesario.
+
+---
+
+## 4. Semáforo para estaciones de preparación
+
+Se implementó `EstacionesPreparacion.java` utilizando un `Semaphore(3)` para simular la capacidad limitada de tres estaciones de preparación de pedidos.
+
+### Resultados:
+* **Pedidos procesados:** 10
+* **Ocupación máxima simultánea:** 3 estaciones
+* **Estaciones libres al finalizar:** 3
+
+El semáforo permitió regular el acceso concorrente a un recurso físico limitado, mientras que `synchronized` protegió la integridad lógica del inventario.
+
+---
+
+## Conclusión general
+
+La Semana 6 permitió corregir las condiciones de carrera detectadas anteriormente y comprobar de forma experimental la importancia de delimitar correctamente los mecanismos de sincronización:
+1. El inventario protegido mantuvo una consistencia de **0 descuadres** en todas las ejecuciones.
+2. El semáforo limitó con precisión la capacidad máxima de las estaciones de atención.
+
 # Semana 7 - Bloqueos y Sincronización (U2)
 
 ## Bloque 1: Las cuatro condiciones de Coffman y Deadlock

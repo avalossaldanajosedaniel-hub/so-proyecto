@@ -1,34 +1,821 @@
 Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
-[00:25:51] Servidor de DanyNetwork listo. PID 19511
-[00:25:51] Directorio de trabajo: /home/kali/so-proyecto
-[00:25:56] En espera de pedidos
-[00:26:01] En espera de pedidos
-[00:26:06] En espera de pedidos
-[00:26:11] En espera de pedidos
-[00:26:16] En espera de pedidos
-[00:26:21] En espera de pedidos
-[00:26:26] En espera de pedidos
-[00:26:31] En espera de pedidos
-[00:26:36] En espera de pedidos
-[00:26:41] En espera de pedidos
-[00:26:46] En espera de pedidos
-[00:26:51] En espera de pedidos
-[00:26:56] En espera de pedidos
-[00:27:01] En espera de pedidos
-[00:27:06] En espera de pedidos
-[00:27:11] En espera de pedidos
-[00:27:16] En espera de pedidos
-[00:27:21] En espera de pedidos
-[00:27:26] En espera de pedidos
-[00:27:31] En espera de pedidos
-[00:27:36] En espera de pedidos
-[00:27:41] En espera de pedidos
-[00:27:46] En espera de pedidos
-[00:27:51] En espera de pedidos
-[00:27:56] En espera de pedidos
-[00:28:01] En espera de pedidos
-[00:28:06] En espera de pedidos
-[00:28:11] En espera de pedidos
-[00:28:16] En espera de pedidos
-[00:28:21] En espera de pedidos
-[00:28:26] En espera de pedidos
+[12:01:50.845] Servidor de DanyNetwork listo. PID 158005
+[12:01:50.870] Inventario cargado desde datos/catalogo.txt
+[12:01:50.871] Formato: ID;PRODUCTO;CANTIDAD
+[12:01:50.879] pedido-1 empieza: 1;camaras;5
+[12:01:50.888] Recibido pedido 1. Hilos vivos: 2
+[12:01:50.889] Recibido pedido 2. Hilos vivos: 3
+[12:01:50.889] pedido-2 empieza: 2;Routers;2
+[12:01:50.889] Recibido pedido 3. Hilos vivos: 4
+[12:01:50.890] pedido-3 empieza: 3;switches;3
+[12:01:50.890] Recibido pedido 4. Hilos vivos: 5
+[12:01:50.890] pedido-4 empieza: 4;Cable de red;4
+[12:01:50.891] Recibido pedido 5. Hilos vivos: 6
+[12:01:50.891] pedido-5 empieza: 5;poe;2
+[12:01:50.893] Recibido pedido 6. Hilos vivos: 7
+[12:01:50.893] pedido-6 empieza: 6;eliminadores;1
+[12:01:50.893] Recibido pedido 7. Hilos vivos: 8
+[12:01:50.894] pedido-7 empieza: 7;ponchadoras;2
+[12:01:50.895] Recibido pedido 8. Hilos vivos: 9
+[12:01:50.896] pedido-8 empieza: 8;Cable de red;1
+[12:01:50.896] pedido-9 empieza: 9;eliminadores;1
+[12:01:50.896] Recibido pedido 9. Hilos vivos: 10
+[12:01:50.897] pedido-10 empieza: 10;camaras;4
+[12:01:50.898] Recibido pedido 10. Hilos vivos: 11
+[12:01:50.899] pedido-11 empieza: 11;conectores rj45;1
+[12:01:50.899] Recibido pedido 11. Hilos vivos: 12
+[12:01:50.900] pedido-1 proceso: 1;camaras;5;RECHAZADO
+[12:01:50.900] pedido-2 proceso: 2;Routers;2;CONFIRMADO
+[12:01:50.900] pedido-6 proceso: 6;eliminadores;1;CONFIRMADO
+[12:01:50.900] pedido-3 proceso: 3;switches;3;CONFIRMADO
+[12:01:50.900] Recibido pedido 12. Hilos vivos: 13
+[12:01:50.900] pedido-10 proceso: 10;camaras;4;CONFIRMADO
+[12:01:50.902] pedido-3 termino
+[12:01:50.900] pedido-7 proceso: 7;ponchadoras;2;CONFIRMADO
+[12:01:50.902] pedido-2 termino
+[12:01:50.902] pedido-7 termino
+[12:01:50.902] pedido-9 proceso: 9;eliminadores;1;CONFIRMADO
+[12:01:50.902] Recibido pedido 13. Hilos vivos: 11
+[12:01:50.902] pedido-6 termino
+[12:01:50.902] pedido-10 termino
+[12:01:50.901] pedido-5 proceso: 5;poe;2;CONFIRMADO
+[12:01:50.902] pedido-1 termino
+[12:01:50.902] pedido-4 proceso: 4;Cable de red;4;RECHAZADO
+[12:01:50.902] pedido-9 termino
+[12:01:50.903] pedido-4 termino
+[12:01:50.902] pedido-12 empieza: 12;Routers;1
+[12:01:50.903] pedido-5 termino
+[12:01:50.903] Recibido pedido 14. Hilos vivos: 7
+[12:01:50.903] pedido-13 empieza: 13;camaras;1
+[12:01:50.903] pedido-14 empieza: 14;Routers;4
+[12:01:50.904] pedido-8 proceso: 8;Cable de red;1;CONFIRMADO
+[12:01:50.904] pedido-8 termino
+[12:01:50.904] Recibido pedido 15. Hilos vivos: 7
+[12:01:50.904] pedido-15 empieza: 15;Routers;1
+[12:01:50.905] Recibido pedido 16. Hilos vivos: 7
+[12:01:50.905] pedido-12 proceso: 12;Routers;1;CONFIRMADO
+[12:01:50.905] pedido-16 empieza: 16;Routers;3
+[12:01:50.905] pedido-12 termino
+[12:01:50.905] Recibido pedido 17. Hilos vivos: 7
+[12:01:50.906] Recibido pedido 18. Hilos vivos: 8
+[12:01:50.906] pedido-11 proceso: 11;conectores rj45;1;CONFIRMADO
+[12:01:50.906] pedido-17 empieza: 17;poe;1
+[12:01:50.907] pedido-11 termino
+[12:01:50.907] pedido-18 empieza: 18;poe;4
+[12:01:50.908] pedido-19 empieza: 19;Routers;2
+[12:01:50.908] Recibido pedido 19. Hilos vivos: 9
+[12:01:50.908] Recibido pedido 20. Hilos vivos: 9
+[12:01:50.909] pedido-15 proceso: 15;Routers;1;RECHAZADO
+[12:01:50.908] pedido-20 empieza: 20;eliminadores;5
+[12:01:50.909] pedido-13 proceso: 13;camaras;1;RECHAZADO
+[12:01:50.909] pedido-19 proceso: 19;Routers;2;RECHAZADO
+[12:01:50.909] pedido-16 proceso: 16;Routers;3;CONFIRMADO
+[12:01:50.909] pedido-14 proceso: 14;Routers;4;RECHAZADO
+[12:01:50.909] Recibido pedido 21. Hilos vivos: 10
+[12:01:50.909] pedido-16 termino
+[12:01:50.909] pedido-15 termino
+[12:01:50.909] pedido-13 termino
+[12:01:50.909] pedido-19 termino
+[12:01:50.909] pedido-14 termino
+[12:01:50.909] pedido-21 empieza: 21;Routers;3
+[12:01:50.910] Recibido pedido 22. Hilos vivos: 8
+[12:01:50.910] pedido-22 empieza: 22;switches;3
+[12:01:50.910] pedido-20 proceso: 20;eliminadores;5;CONFIRMADO
+[12:01:50.910] pedido-18 proceso: 18;poe;4;RECHAZADO
+[12:01:50.911] pedido-23 empieza: 23;conectores rj45;4
+[12:01:50.911] pedido-20 termino
+[12:01:50.911] Recibido pedido 23. Hilos vivos: 7
+[12:01:50.911] pedido-18 termino
+[12:01:50.912] Recibido pedido 24. Hilos vivos: 6
+[12:01:50.912] pedido-24 empieza: 24;camaras;3
+[12:01:50.912] pedido-17 proceso: 17;poe;1;CONFIRMADO
+[12:01:50.912] Recibido pedido 25. Hilos vivos: 7
+[12:01:50.912] pedido-25 empieza: 25;ponchadoras;1
+[12:01:50.912] pedido-17 termino
+[12:01:50.913] pedido-26 empieza: 26;ponchadoras;1
+[12:01:50.913] Recibido pedido 26. Hilos vivos: 7
+[12:01:50.914] pedido-23 proceso: 23;conectores rj45;4;CONFIRMADO
+[12:01:50.914] Recibido pedido 27. Hilos vivos: 8
+[12:01:50.914] pedido-23 termino
+[12:01:50.915] pedido-27 empieza: 27;poe;5
+[12:01:50.915] pedido-21 proceso: 21;Routers;3;RECHAZADO
+[12:01:50.915] pedido-27 proceso: 27;poe;5;RECHAZADO
+[12:01:50.915] pedido-28 empieza: 28;Cable de red;5
+[12:01:50.915] pedido-22 proceso: 22;switches;3;CONFIRMADO
+[12:01:50.915] Recibido pedido 28. Hilos vivos: 8
+[12:01:50.915] pedido-21 termino
+[12:01:50.915] pedido-27 termino
+[12:01:50.916] pedido-22 termino
+[12:01:50.916] Recibido pedido 29. Hilos vivos: 6
+[12:01:50.916] pedido-29 empieza: 29;Routers;5
+[12:01:50.917] pedido-29 proceso: 29;Routers;5;RECHAZADO
+[12:01:50.917] pedido-26 proceso: 26;ponchadoras;1;CONFIRMADO
+[12:01:50.917] Recibido pedido 30. Hilos vivos: 7
+[12:01:50.917] pedido-30 empieza: 30;switches;2
+[12:01:50.917] pedido-29 termino
+[12:01:50.917] pedido-26 termino
+[12:01:50.918] Recibido pedido 31. Hilos vivos: 6
+[12:01:50.918] pedido-31 empieza: 31;eliminadores;4
+[12:01:50.918] pedido-24 proceso: 24;camaras;3;RECHAZADO
+[12:01:50.918] pedido-25 proceso: 25;ponchadoras;1;CONFIRMADO
+[12:01:50.919] pedido-24 termino
+[12:01:50.918] Recibido pedido 32. Hilos vivos: 7
+[12:01:50.919] pedido-25 termino
+[12:01:50.920] pedido-32 empieza: 32;Cable de red;1
+[12:01:50.920] pedido-33 empieza: 33;poe;5
+[12:01:50.920] Recibido pedido 33. Hilos vivos: 6
+[12:01:50.920] pedido-28 proceso: 28;Cable de red;5;RECHAZADO
+[12:01:50.920] pedido-30 proceso: 30;switches;2;CONFIRMADO
+[12:01:50.921] pedido-28 termino
+[12:01:50.921] pedido-30 termino
+[12:01:50.921] Recibido pedido 34. Hilos vivos: 7
+[12:01:50.921] pedido-34 empieza: 34;ponchadoras;1
+[12:01:50.922] Recibido pedido 35. Hilos vivos: 6
+[12:01:50.922] pedido-35 empieza: 35;Cable de red;2
+[12:01:50.922] pedido-31 proceso: 31;eliminadores;4;CONFIRMADO
+[12:01:50.922] pedido-31 termino
+[12:01:50.922] Recibido pedido 36. Hilos vivos: 7
+[12:01:50.922] pedido-35 proceso: 35;Cable de red;2;RECHAZADO
+[12:01:50.922] pedido-36 empieza: 36;ponchadoras;5
+[12:01:50.923] pedido-35 termino
+[12:01:50.923] Recibido pedido 37. Hilos vivos: 7
+[12:01:50.924] pedido-33 proceso: 33;poe;5;RECHAZADO
+[12:01:50.924] pedido-34 proceso: 34;ponchadoras;1;CONFIRMADO
+[12:01:50.924] pedido-38 empieza: 38;poe;1
+[12:01:50.924] Recibido pedido 38. Hilos vivos: 7
+[12:01:50.924] pedido-37 empieza: 37;ponchadoras;4
+[12:01:50.924] pedido-33 termino
+[12:01:50.924] pedido-34 termino
+[12:01:50.925] Recibido pedido 39. Hilos vivos: 6
+[12:01:50.925] pedido-39 empieza: 39;poe;1
+[12:01:50.925] pedido-32 proceso: 32;Cable de red;1;CONFIRMADO
+[12:01:50.925] Recibido pedido 40. Hilos vivos: 7
+[12:01:50.926] pedido-32 termino
+[12:01:50.926] pedido-40 empieza: 40;conectores rj45;2
+[12:01:50.926] Recibido pedido 41. Hilos vivos: 7
+[12:01:50.926] pedido-41 empieza: 41;Routers;1
+[12:01:50.927] Recibido pedido 42. Hilos vivos: 8
+[12:01:50.927] pedido-37 proceso: 37;ponchadoras;4;CONFIRMADO
+[12:01:50.927] pedido-38 proceso: 38;poe;1;RECHAZADO
+[12:01:50.928] Recibido pedido 43. Hilos vivos: 9
+[12:01:50.928] pedido-38 termino
+[12:01:50.928] pedido-42 empieza: 42;poe;1
+[12:01:50.928] pedido-37 termino
+[12:01:50.928] pedido-36 proceso: 36;ponchadoras;5;CONFIRMADO
+[12:01:50.928] pedido-41 proceso: 41;Routers;1;RECHAZADO
+[12:01:50.928] pedido-36 termino
+[12:01:50.928] Recibido pedido 44. Hilos vivos: 8
+[12:01:50.928] pedido-44 empieza: 44;conectores rj45;2
+[12:01:50.928] pedido-43 empieza: 43;eliminadores;2
+[12:01:50.929] pedido-45 empieza: 45;ponchadoras;2
+[12:01:50.928] pedido-42 proceso: 42;poe;1;RECHAZADO
+[12:01:50.928] pedido-41 termino
+[12:01:50.929] pedido-42 termino
+[12:01:50.929] Recibido pedido 45. Hilos vivos: 8
+[12:01:50.930] pedido-40 proceso: 40;conectores rj45;2;CONFIRMADO
+[12:01:50.930] pedido-40 termino
+[12:01:50.930] pedido-45 proceso: 45;ponchadoras;2;RECHAZADO
+[12:01:50.930] pedido-45 termino
+[12:01:50.930] pedido-43 proceso: 43;eliminadores;2;RECHAZADO
+[12:01:50.930] pedido-43 termino
+[12:01:50.930] pedido-39 proceso: 39;poe;1;RECHAZADO
+[12:01:50.930] pedido-44 proceso: 44;conectores rj45;2;RECHAZADO
+[12:01:50.930] Recibido pedido 46. Hilos vivos: 4
+[12:01:50.930] pedido-44 termino
+[12:01:50.930] pedido-39 termino
+[12:01:50.931] pedido-46 empieza: 46;Cable de red;1
+[12:01:50.931] Recibido pedido 47. Hilos vivos: 3
+[12:01:50.931] pedido-46 proceso: 46;Cable de red;1;RECHAZADO
+[12:01:50.931] pedido-46 termino
+[12:01:50.932] Recibido pedido 48. Hilos vivos: 3
+[12:01:50.932] pedido-47 empieza: 47;Cable de red;5
+[12:01:50.933] Recibido pedido 49. Hilos vivos: 4
+[12:01:50.933] pedido-48 empieza: 48;ponchadoras;5
+[12:01:50.933] pedido-49 empieza: 49;poe;5
+[12:01:50.933] pedido-47 proceso: 47;Cable de red;5;RECHAZADO
+[12:01:50.933] pedido-48 proceso: 48;ponchadoras;5;RECHAZADO
+[12:01:50.933] pedido-50 empieza: 50;Routers;1
+[12:01:50.933] Recibido pedido 50. Hilos vivos: 5
+[12:01:50.933] pedido-49 proceso: 49;poe;5;RECHAZADO
+[12:01:50.934] pedido-47 termino
+[12:01:50.934] pedido-48 termino
+[12:01:50.934] pedido-50 proceso: 50;Routers;1;RECHAZADO
+[12:01:50.934] pedido-49 termino
+[12:01:50.934] pedido-50 termino
+[12:01:50.934] Recibido pedido 51. Hilos vivos: 4
+[12:01:50.934] pedido-51 empieza: 51;switches;5
+[12:01:50.935] Recibido pedido 52. Hilos vivos: 3
+[12:01:50.935] pedido-51 proceso: 51;switches;5;RECHAZADO
+[12:01:50.935] pedido-51 termino
+[12:01:50.935] Recibido pedido 53. Hilos vivos: 3
+[12:01:50.942] pedido-54 empieza: 54;Routers;5
+[12:01:50.942] Recibido pedido 54. Hilos vivos: 4
+[12:01:50.943] pedido-54 proceso: 54;Routers;5;RECHAZADO
+[12:01:50.942] pedido-52 empieza: 52;camaras;5
+[12:01:50.943] Recibido pedido 55. Hilos vivos: 5
+[12:01:50.942] pedido-53 empieza: 53;Routers;2
+[12:01:50.943] pedido-54 termino
+[12:01:50.943] pedido-52 proceso: 52;camaras;5;RECHAZADO
+[12:01:50.943] pedido-52 termino
+[12:01:50.943] Recibido pedido 56. Hilos vivos: 5
+[12:01:50.943] pedido-55 empieza: 55;eliminadores;3
+[12:01:50.944] pedido-55 proceso: 55;eliminadores;3;RECHAZADO
+[12:01:50.944] pedido-55 termino
+[12:01:50.944] Recibido pedido 57. Hilos vivos: 4
+[12:01:50.944] pedido-57 empieza: 57;ponchadoras;4
+[12:01:50.943] pedido-53 proceso: 53;Routers;2;RECHAZADO
+[12:01:50.944] pedido-57 proceso: 57;ponchadoras;4;RECHAZADO
+[12:01:50.944] pedido-56 empieza: 56;Routers;3
+[12:01:50.944] pedido-53 termino
+[12:01:50.944] pedido-56 proceso: 56;Routers;3;RECHAZADO
+[12:01:50.944] pedido-57 termino
+[12:01:50.944] pedido-58 empieza: 58;poe;2
+[12:01:50.944] Recibido pedido 58. Hilos vivos: 5
+[12:01:50.944] pedido-56 termino
+[12:01:50.945] pedido-58 proceso: 58;poe;2;RECHAZADO
+[12:01:50.945] pedido-58 termino
+[12:01:50.945] Recibido pedido 59. Hilos vivos: 2
+[12:01:50.945] pedido-59 empieza: 59;Cable de red;2
+[12:01:50.945] pedido-59 proceso: 59;Cable de red;2;RECHAZADO
+[12:01:50.945] pedido-59 termino
+[12:01:50.946] Recibido pedido 60. Hilos vivos: 2
+[12:01:50.946] pedido-60 empieza: 60;ponchadoras;3
+[12:01:50.946] pedido-61 empieza: 61;conectores rj45;5
+[12:01:50.946] pedido-60 proceso: 60;ponchadoras;3;RECHAZADO
+[12:01:50.946] Recibido pedido 61. Hilos vivos: 3
+[12:01:50.946] pedido-61 proceso: 61;conectores rj45;5;RECHAZADO
+[12:01:50.946] pedido-60 termino
+[12:01:50.946] pedido-61 termino
+[12:01:50.947] Recibido pedido 62. Hilos vivos: 2
+[12:01:50.947] pedido-62 empieza: 62;ponchadoras;5
+[12:01:50.947] pedido-62 proceso: 62;ponchadoras;5;RECHAZADO
+[12:01:50.947] pedido-62 termino
+[12:01:50.947] Recibido pedido 63. Hilos vivos: 3
+[12:01:50.948] pedido-63 empieza: 63;poe;3
+[12:01:50.948] pedido-63 proceso: 63;poe;3;RECHAZADO
+[12:01:50.948] pedido-63 termino
+[12:01:50.948] Recibido pedido 64. Hilos vivos: 2
+[12:01:50.948] pedido-64 empieza: 64;poe;3
+[12:01:50.948] pedido-64 proceso: 64;poe;3;RECHAZADO
+[12:01:50.948] pedido-64 termino
+[12:01:50.949] Recibido pedido 65. Hilos vivos: 3
+[12:01:50.949] pedido-65 empieza: 65;conectores rj45;1
+[12:01:50.949] Recibido pedido 66. Hilos vivos: 3
+[12:01:50.949] pedido-66 empieza: 66;conectores rj45;4
+[12:01:50.950] Recibido pedido 67. Hilos vivos: 4
+[12:01:50.950] pedido-67 empieza: 67;conectores rj45;4
+[12:01:50.950] pedido-65 proceso: 65;conectores rj45;1;CONFIRMADO
+[12:01:50.950] pedido-65 termino
+[12:01:50.950] Recibido pedido 68. Hilos vivos: 5
+[12:01:50.950] pedido-67 proceso: 67;conectores rj45;4;RECHAZADO
+[12:01:50.950] pedido-66 proceso: 66;conectores rj45;4;RECHAZADO
+[12:01:50.950] pedido-67 termino
+[12:01:50.950] pedido-68 empieza: 68;poe;3
+[12:01:50.950] pedido-66 termino
+[12:01:50.951] pedido-68 proceso: 68;poe;3;RECHAZADO
+[12:01:50.951] pedido-68 termino
+[12:01:50.951] Recibido pedido 69. Hilos vivos: 2
+[12:01:50.951] pedido-69 empieza: 69;conectores rj45;1
+[12:01:50.951] pedido-69 proceso: 69;conectores rj45;1;RECHAZADO
+[12:01:50.951] Recibido pedido 70. Hilos vivos: 3
+[12:01:50.951] pedido-69 termino
+[12:01:50.951] pedido-70 empieza: 70;poe;4
+[12:01:50.952] pedido-70 proceso: 70;poe;4;RECHAZADO
+[12:01:50.952] pedido-70 termino
+[12:01:50.952] Recibido pedido 71. Hilos vivos: 2
+[12:01:50.952] pedido-71 empieza: 71;eliminadores;5
+[12:01:50.952] pedido-71 proceso: 71;eliminadores;5;RECHAZADO
+[12:01:50.952] pedido-71 termino
+[12:01:50.953] Recibido pedido 72. Hilos vivos: 2
+[12:01:50.953] pedido-72 empieza: 72;conectores rj45;3
+[12:01:50.953] pedido-72 proceso: 72;conectores rj45;3;RECHAZADO
+[12:01:50.953] pedido-72 termino
+[12:01:50.953] Recibido pedido 73. Hilos vivos: 2
+[12:01:50.954] pedido-73 empieza: 73;camaras;5
+[12:01:50.954] pedido-73 proceso: 73;camaras;5;RECHAZADO
+[12:01:50.954] Recibido pedido 74. Hilos vivos: 3
+[12:01:50.954] pedido-73 termino
+[12:01:50.954] pedido-74 empieza: 74;Cable de red;5
+[12:01:50.954] pedido-74 proceso: 74;Cable de red;5;RECHAZADO
+[12:01:50.954] pedido-74 termino
+[12:01:50.954] Recibido pedido 75. Hilos vivos: 3
+[12:01:50.955] Recibido pedido 76. Hilos vivos: 3
+[12:01:50.955] pedido-75 empieza: 75;conectores rj45;4
+[12:01:50.955] pedido-76 empieza: 76;Routers;5
+[12:01:50.955] pedido-75 proceso: 75;conectores rj45;4;RECHAZADO
+[12:01:50.955] pedido-76 proceso: 76;Routers;5;RECHAZADO
+[12:01:50.955] pedido-75 termino
+[12:01:50.955] pedido-76 termino
+[12:01:50.955] Recibido pedido 77. Hilos vivos: 2
+[12:01:50.956] Recibido pedido 78. Hilos vivos: 3
+[12:01:50.956] pedido-77 empieza: 77;camaras;5
+[12:01:50.956] pedido-78 empieza: 78;Cable de red;2
+[12:01:50.956] pedido-77 proceso: 77;camaras;5;RECHAZADO
+[12:01:50.956] pedido-77 termino
+[12:01:50.956] Recibido pedido 79. Hilos vivos: 4
+[12:01:50.956] pedido-78 proceso: 78;Cable de red;2;RECHAZADO
+[12:01:50.957] pedido-79 empieza: 79;poe;4
+[12:01:50.957] pedido-78 termino
+[12:01:50.957] pedido-79 proceso: 79;poe;4;RECHAZADO
+[12:01:50.957] pedido-79 termino
+[12:01:50.957] Recibido pedido 80. Hilos vivos: 3
+[12:01:50.957] pedido-80 empieza: 80;Cable de red;2
+[12:01:50.957] Recibido pedido 81. Hilos vivos: 3
+[12:01:50.957] pedido-80 proceso: 80;Cable de red;2;RECHAZADO
+[12:01:50.957] pedido-81 empieza: 81;conectores rj45;4
+[12:01:50.958] pedido-80 termino
+[12:01:50.958] pedido-81 proceso: 81;conectores rj45;4;RECHAZADO
+[12:01:50.958] Recibido pedido 82. Hilos vivos: 3
+[12:01:50.958] pedido-81 termino
+[12:01:50.958] pedido-82 empieza: 82;switches;4
+[12:01:50.958] Recibido pedido 83. Hilos vivos: 3
+[12:01:50.958] pedido-83 empieza: 83;switches;2
+[12:01:50.958] pedido-82 proceso: 82;switches;4;RECHAZADO
+[12:01:50.959] pedido-82 termino
+[12:01:50.959] Recibido pedido 84. Hilos vivos: 3
+[12:01:50.959] pedido-84 empieza: 84;Cable de red;2
+[12:01:50.959] Recibido pedido 85. Hilos vivos: 4
+[12:01:50.959] pedido-85 empieza: 85;poe;3
+[12:01:50.960] pedido-83 proceso: 83;switches;2;CONFIRMADO
+[12:01:50.960] Recibido pedido 86. Hilos vivos: 5
+[12:01:50.960] pedido-83 termino
+[12:01:50.960] pedido-85 proceso: 85;poe;3;RECHAZADO
+[12:01:50.960] pedido-84 proceso: 84;Cable de red;2;RECHAZADO
+[12:01:50.960] pedido-84 termino
+[12:01:50.960] pedido-86 empieza: 86;switches;5
+[12:01:50.960] pedido-85 termino
+[12:01:50.960] Recibido pedido 87. Hilos vivos: 4
+[12:01:50.960] pedido-86 proceso: 86;switches;5;RECHAZADO
+[12:01:50.960] pedido-86 termino
+[12:01:50.961] pedido-87 empieza: 87;eliminadores;1
+[12:01:50.961] Recibido pedido 88. Hilos vivos: 3
+[12:01:50.961] pedido-88 empieza: 88;conectores rj45;1
+[12:01:50.961] Recibido pedido 89. Hilos vivos: 4
+[12:01:50.961] pedido-89 empieza: 89;ponchadoras;1
+[12:01:50.962] Recibido pedido 90. Hilos vivos: 5
+[12:01:50.962] pedido-90 empieza: 90;ponchadoras;1
+[12:01:50.962] pedido-87 proceso: 87;eliminadores;1;CONFIRMADO
+[12:01:50.962] Recibido pedido 91. Hilos vivos: 6
+[12:01:50.962] pedido-91 empieza: 91;Routers;4
+[12:01:50.962] pedido-87 termino
+[12:01:50.962] Recibido pedido 92. Hilos vivos: 6
+[12:01:50.963] pedido-92 empieza: 92;conectores rj45;2
+[12:01:50.963] Recibido pedido 93. Hilos vivos: 7
+[12:01:50.963] pedido-93 empieza: 93;switches;1
+[12:01:50.963] Recibido pedido 94. Hilos vivos: 8
+[12:01:50.963] pedido-94 empieza: 94;Cable de red;5
+[12:01:50.964] Recibido pedido 95. Hilos vivos: 9
+[12:01:50.964] pedido-89 proceso: 89;ponchadoras;1;RECHAZADO
+[12:01:50.964] pedido-93 proceso: 93;switches;1;RECHAZADO
+[12:01:50.964] pedido-88 proceso: 88;conectores rj45;1;RECHAZADO
+[12:01:50.964] pedido-92 proceso: 92;conectores rj45;2;RECHAZADO
+[12:01:50.964] pedido-90 proceso: 90;ponchadoras;1;CONFIRMADO
+[12:01:50.964] Recibido pedido 96. Hilos vivos: 10
+[12:01:50.964] pedido-94 proceso: 94;Cable de red;5;RECHAZADO
+[12:01:50.965] pedido-94 termino
+[12:01:50.964] pedido-95 empieza: 95;camaras;3
+[12:01:50.964] pedido-89 termino
+[12:01:50.964] pedido-93 termino
+[12:01:50.965] Recibido pedido 97. Hilos vivos: 9
+[12:01:50.964] pedido-91 proceso: 91;Routers;4;RECHAZADO
+[12:01:50.964] pedido-88 termino
+[12:01:50.965] pedido-91 termino
+[12:01:50.964] pedido-92 termino
+[12:01:50.965] pedido-98 empieza: 98;switches;3
+[12:01:50.965] pedido-90 termino
+[12:01:50.966] pedido-98 proceso: 98;switches;3;RECHAZADO
+[12:01:50.965] pedido-96 empieza: 96;eliminadores;5
+[12:01:50.965] pedido-95 proceso: 95;camaras;3;RECHAZADO
+[12:01:50.966] pedido-97 empieza: 97;switches;4
+[12:01:50.965] Recibido pedido 98. Hilos vivos: 7
+[12:01:50.966] pedido-97 proceso: 97;switches;4;RECHAZADO
+[12:01:50.966] pedido-97 termino
+[12:01:50.966] pedido-99 empieza: 99;poe;2
+[12:01:50.967] pedido-99 proceso: 99;poe;2;RECHAZADO
+[12:01:50.967] pedido-99 termino
+[12:01:50.966] pedido-98 termino
+[12:01:50.966] pedido-96 proceso: 96;eliminadores;5;RECHAZADO
+[12:01:50.966] pedido-95 termino
+[12:01:50.966] Recibido pedido 99. Hilos vivos: 6
+[12:01:50.967] pedido-96 termino
+[12:01:50.968] Recibido pedido 100. Hilos vivos: 2
+[12:01:50.968] pedido-100 empieza: 100;eliminadores;5
+[12:01:50.968] pedido-100 proceso: 100;eliminadores;5;RECHAZADO
+[12:01:50.968] pedido-100 termino
+[12:01:50.968] Recibido pedido 101. Hilos vivos: 2
+[12:01:50.969] pedido-101 empieza: 101;camaras;1
+[12:01:50.969] Recibido pedido 102. Hilos vivos: 3
+[12:01:50.969] pedido-101 proceso: 101;camaras;1;RECHAZADO
+[12:01:50.969] pedido-102 empieza: 102;conectores rj45;1
+[12:01:50.969] pedido-101 termino
+[12:01:50.969] pedido-102 proceso: 102;conectores rj45;1;RECHAZADO
+[12:01:50.969] pedido-102 termino
+[12:01:50.969] Recibido pedido 103. Hilos vivos: 2
+[12:01:50.970] Recibido pedido 104. Hilos vivos: 3
+[12:01:50.970] pedido-103 empieza: 103;switches;2
+[12:01:50.970] pedido-103 proceso: 103;switches;2;RECHAZADO
+[12:01:50.970] Recibido pedido 105. Hilos vivos: 4
+[12:01:50.970] pedido-103 termino
+[12:01:50.970] pedido-105 empieza: 105;conectores rj45;5
+[12:01:50.971] pedido-105 proceso: 105;conectores rj45;5;RECHAZADO
+[12:01:50.971] Recibido pedido 106. Hilos vivos: 4
+[12:01:50.971] pedido-105 termino
+[12:01:50.971] pedido-106 empieza: 106;poe;5
+[12:01:50.971] Recibido pedido 107. Hilos vivos: 4
+[12:01:50.971] pedido-104 empieza: 104;Cable de red;3
+[12:01:50.971] pedido-107 empieza: 107;camaras;3
+[12:01:50.972] pedido-106 proceso: 106;poe;5;RECHAZADO
+[12:01:50.972] pedido-106 termino
+[12:01:50.972] pedido-104 proceso: 104;Cable de red;3;RECHAZADO
+[12:01:50.972] pedido-108 empieza: 108;Routers;2
+[12:01:50.972] pedido-107 proceso: 107;camaras;3;RECHAZADO
+[12:01:50.972] pedido-108 proceso: 108;Routers;2;RECHAZADO
+[12:01:50.972] Recibido pedido 108. Hilos vivos: 5
+[12:01:50.972] pedido-104 termino
+[12:01:50.972] pedido-107 termino
+[12:01:50.972] pedido-108 termino
+[12:01:50.973] Recibido pedido 109. Hilos vivos: 2
+[12:01:50.973] Recibido pedido 110. Hilos vivos: 3
+[12:01:50.973] pedido-109 empieza: 109;Routers;5
+[12:01:50.973] pedido-110 empieza: 110;poe;2
+[12:01:50.974] pedido-109 proceso: 109;Routers;5;RECHAZADO
+[12:01:50.974] Recibido pedido 111. Hilos vivos: 4
+[12:01:50.974] pedido-110 proceso: 110;poe;2;RECHAZADO
+[12:01:50.974] pedido-110 termino
+[12:01:50.974] pedido-111 empieza: 111;conectores rj45;2
+[12:01:50.974] pedido-109 termino
+[12:01:50.974] pedido-111 proceso: 111;conectores rj45;2;RECHAZADO
+[12:01:50.974] Recibido pedido 112. Hilos vivos: 4
+[12:01:50.975] pedido-111 termino
+[12:01:50.975] pedido-112 empieza: 112;switches;4
+[12:01:50.975] pedido-112 proceso: 112;switches;4;RECHAZADO
+[12:01:50.975] pedido-112 termino
+[12:01:50.975] Recibido pedido 113. Hilos vivos: 2
+[12:01:50.975] pedido-113 empieza: 113;camaras;5
+[12:01:50.976] pedido-113 proceso: 113;camaras;5;RECHAZADO
+[12:01:50.976] pedido-113 termino
+[12:01:50.976] Recibido pedido 114. Hilos vivos: 2
+[12:01:50.976] pedido-114 empieza: 114;eliminadores;2
+[12:01:50.976] pedido-114 proceso: 114;eliminadores;2;RECHAZADO
+[12:01:50.976] pedido-114 termino
+[12:01:50.976] Recibido pedido 115. Hilos vivos: 3
+[12:01:50.976] pedido-115 empieza: 115;Routers;4
+[12:01:50.977] pedido-115 proceso: 115;Routers;4;RECHAZADO
+[12:01:50.977] pedido-115 termino
+[12:01:50.977] Recibido pedido 116. Hilos vivos: 2
+[12:01:50.977] Recibido pedido 117. Hilos vivos: 3
+[12:01:50.977] pedido-116 empieza: 116;eliminadores;1
+[12:01:50.977] pedido-117 empieza: 117;camaras;2
+[12:01:50.977] pedido-116 proceso: 116;eliminadores;1;RECHAZADO
+[12:01:50.978] pedido-116 termino
+[12:01:50.978] pedido-117 proceso: 117;camaras;2;RECHAZADO
+[12:01:50.978] Recibido pedido 118. Hilos vivos: 4
+[12:01:50.978] pedido-117 termino
+[12:01:50.978] pedido-118 empieza: 118;ponchadoras;5
+[12:01:50.978] pedido-118 proceso: 118;ponchadoras;5;RECHAZADO
+[12:01:50.978] pedido-118 termino
+[12:01:50.978] Recibido pedido 119. Hilos vivos: 3
+[12:01:50.979] Recibido pedido 120. Hilos vivos: 3
+[12:01:50.979] pedido-119 empieza: 119;ponchadoras;3
+[12:01:50.979] pedido-120 empieza: 120;conectores rj45;3
+[12:01:50.979] Recibido pedido 121. Hilos vivos: 4
+[12:01:50.979] pedido-120 proceso: 120;conectores rj45;3;RECHAZADO
+[12:01:50.979] pedido-119 proceso: 119;ponchadoras;3;RECHAZADO
+[12:01:50.979] pedido-119 termino
+[12:01:50.979] pedido-121 empieza: 121;Cable de red;5
+[12:01:50.979] pedido-120 termino
+[12:01:50.979] Recibido pedido 122. Hilos vivos: 4
+[12:01:50.979] pedido-121 proceso: 121;Cable de red;5;RECHAZADO
+[12:01:50.980] pedido-122 empieza: 122;poe;2
+[12:01:50.980] pedido-121 termino
+[12:01:50.980] pedido-122 proceso: 122;poe;2;RECHAZADO
+[12:01:50.980] pedido-122 termino
+[12:01:50.980] Recibido pedido 123. Hilos vivos: 3
+[12:01:50.981] pedido-123 empieza: 123;Routers;2
+[12:01:50.981] pedido-124 empieza: 124;Routers;1
+[12:01:50.981] Recibido pedido 124. Hilos vivos: 3
+[12:01:50.981] pedido-123 proceso: 123;Routers;2;RECHAZADO
+[12:01:50.981] pedido-124 proceso: 124;Routers;1;RECHAZADO
+[12:01:50.981] pedido-123 termino
+[12:01:50.981] pedido-124 termino
+[12:01:50.981] Recibido pedido 125. Hilos vivos: 2
+[12:01:50.982] pedido-125 empieza: 125;poe;1
+[12:01:50.982] Recibido pedido 126. Hilos vivos: 3
+[12:01:50.982] pedido-126 empieza: 126;poe;3
+[12:01:50.982] pedido-125 proceso: 125;poe;1;RECHAZADO
+[12:01:50.982] pedido-126 proceso: 126;poe;3;RECHAZADO
+[12:01:50.982] pedido-125 termino
+[12:01:50.982] pedido-126 termino
+[12:01:50.983] Recibido pedido 127. Hilos vivos: 2
+[12:01:50.983] pedido-127 empieza: 127;camaras;4
+[12:01:50.983] pedido-127 proceso: 127;camaras;4;RECHAZADO
+[12:01:50.983] pedido-127 termino
+[12:01:50.984] Recibido pedido 128. Hilos vivos: 2
+[12:01:50.984] pedido-128 empieza: 128;camaras;2
+[12:01:50.984] pedido-128 proceso: 128;camaras;2;RECHAZADO
+[12:01:50.985] pedido-128 termino
+[12:01:50.984] Recibido pedido 129. Hilos vivos: 3
+[12:01:50.985] pedido-129 empieza: 129;conectores rj45;5
+[12:01:50.985] pedido-129 proceso: 129;conectores rj45;5;RECHAZADO
+[12:01:50.985] pedido-129 termino
+[12:01:50.985] Recibido pedido 130. Hilos vivos: 2
+[12:01:50.985] pedido-130 empieza: 130;Routers;2
+[12:01:50.986] pedido-130 proceso: 130;Routers;2;RECHAZADO
+[12:01:50.986] pedido-130 termino
+[12:01:50.986] Recibido pedido 131. Hilos vivos: 2
+[12:01:50.986] pedido-131 empieza: 131;eliminadores;2
+[12:01:50.986] pedido-131 proceso: 131;eliminadores;2;RECHAZADO
+[12:01:50.986] pedido-131 termino
+[12:01:50.987] Recibido pedido 132. Hilos vivos: 2
+[12:01:50.987] pedido-132 empieza: 132;switches;4
+[12:01:50.987] pedido-132 proceso: 132;switches;4;RECHAZADO
+[12:01:50.987] pedido-132 termino
+[12:01:50.987] Recibido pedido 133. Hilos vivos: 2
+[12:01:50.987] pedido-133 empieza: 133;poe;4
+[12:01:50.987] pedido-133 proceso: 133;poe;4;RECHAZADO
+[12:01:50.987] pedido-133 termino
+[12:01:50.988] Recibido pedido 134. Hilos vivos: 2
+[12:01:50.988] pedido-134 empieza: 134;switches;3
+[12:01:50.988] pedido-134 proceso: 134;switches;3;RECHAZADO
+[12:01:50.988] pedido-134 termino
+[12:01:50.988] Recibido pedido 135. Hilos vivos: 3
+[12:01:50.988] pedido-135 empieza: 135;Cable de red;1
+[12:01:50.988] pedido-135 proceso: 135;Cable de red;1;RECHAZADO
+[12:01:50.988] pedido-135 termino
+[12:01:50.988] Recibido pedido 136. Hilos vivos: 2
+[12:01:50.989] pedido-136 empieza: 136;Routers;1
+[12:01:50.989] Recibido pedido 137. Hilos vivos: 3
+[12:01:50.989] pedido-137 empieza: 137;switches;1
+[12:01:50.989] pedido-136 proceso: 136;Routers;1;RECHAZADO
+[12:01:50.989] pedido-137 proceso: 137;switches;1;RECHAZADO
+[12:01:50.989] pedido-137 termino
+[12:01:50.989] pedido-136 termino
+[12:01:50.989] Recibido pedido 138. Hilos vivos: 2
+[12:01:50.990] pedido-138 empieza: 138;switches;2
+[12:01:50.990] pedido-138 proceso: 138;switches;2;RECHAZADO
+[12:01:50.990] Recibido pedido 139. Hilos vivos: 3
+[12:01:50.990] pedido-138 termino
+[12:01:50.990] pedido-139 empieza: 139;poe;1
+[12:01:50.990] pedido-139 proceso: 139;poe;1;RECHAZADO
+[12:01:50.990] pedido-139 termino
+[12:01:50.990] Recibido pedido 140. Hilos vivos: 2
+[12:01:50.990] pedido-140 empieza: 140;switches;2
+[12:01:50.991] Recibido pedido 141. Hilos vivos: 3
+[12:01:50.991] pedido-141 empieza: 141;ponchadoras;4
+[12:01:50.991] pedido-140 proceso: 140;switches;2;RECHAZADO
+[12:01:50.991] pedido-141 proceso: 141;ponchadoras;4;RECHAZADO
+[12:01:50.991] pedido-141 termino
+[12:01:50.991] Recibido pedido 142. Hilos vivos: 4
+[12:01:50.991] pedido-140 termino
+[12:01:50.991] pedido-142 empieza: 142;conectores rj45;2
+[12:01:50.991] pedido-142 proceso: 142;conectores rj45;2;RECHAZADO
+[12:01:50.991] pedido-142 termino
+[12:01:50.991] Recibido pedido 143. Hilos vivos: 3
+[12:01:50.992] Recibido pedido 144. Hilos vivos: 3
+[12:01:50.992] pedido-143 empieza: 143;eliminadores;1
+[12:01:50.992] pedido-144 empieza: 144;conectores rj45;1
+[12:01:50.992] pedido-143 proceso: 143;eliminadores;1;RECHAZADO
+[12:01:50.992] pedido-144 proceso: 144;conectores rj45;1;RECHAZADO
+[12:01:50.992] Recibido pedido 145. Hilos vivos: 4
+[12:01:50.992] pedido-144 termino
+[12:01:50.992] pedido-143 termino
+[12:01:50.992] pedido-145 empieza: 145;Cable de red;5
+[12:01:50.993] pedido-145 proceso: 145;Cable de red;5;RECHAZADO
+[12:01:50.993] pedido-145 termino
+[12:01:50.993] Recibido pedido 146. Hilos vivos: 2
+[12:01:50.993] pedido-146 empieza: 146;camaras;2
+[12:01:50.993] pedido-146 proceso: 146;camaras;2;RECHAZADO
+[12:01:50.993] pedido-146 termino
+[12:01:50.993] Recibido pedido 147. Hilos vivos: 2
+[12:01:50.993] pedido-147 empieza: 147;camaras;1
+[12:01:50.994] pedido-147 proceso: 147;camaras;1;RECHAZADO
+[12:01:50.994] Recibido pedido 148. Hilos vivos: 3
+[12:01:50.994] pedido-148 empieza: 148;conectores rj45;4
+[12:01:50.994] pedido-147 termino
+[12:01:50.994] pedido-148 proceso: 148;conectores rj45;4;RECHAZADO
+[12:01:50.994] pedido-148 termino
+[12:01:50.994] Recibido pedido 149. Hilos vivos: 2
+[12:01:50.994] pedido-149 empieza: 149;Cable de red;2
+[12:01:50.994] pedido-149 proceso: 149;Cable de red;2;RECHAZADO
+[12:01:50.994] pedido-149 termino
+[12:01:50.995] Recibido pedido 150. Hilos vivos: 2
+[12:01:50.995] pedido-150 empieza: 150;switches;2
+[12:01:50.995] pedido-150 proceso: 150;switches;2;RECHAZADO
+[12:01:50.995] pedido-150 termino
+[12:01:50.995] Recibido pedido 151. Hilos vivos: 3
+[12:01:50.995] pedido-151 empieza: 151;conectores rj45;4
+[12:01:50.995] pedido-151 proceso: 151;conectores rj45;4;RECHAZADO
+[12:01:50.995] pedido-151 termino
+[12:01:50.996] Recibido pedido 152. Hilos vivos: 2
+[12:01:50.996] pedido-152 empieza: 152;camaras;3
+[12:01:50.996] Recibido pedido 153. Hilos vivos: 3
+[12:01:50.996] pedido-153 empieza: 153;switches;4
+[12:01:50.996] pedido-152 proceso: 152;camaras;3;RECHAZADO
+[12:01:50.996] pedido-153 proceso: 153;switches;4;RECHAZADO
+[12:01:50.996] pedido-152 termino
+[12:01:50.996] pedido-153 termino
+[12:01:50.997] Recibido pedido 154. Hilos vivos: 2
+[12:01:50.997] pedido-154 empieza: 154;Cable de red;1
+[12:01:50.997] Recibido pedido 155. Hilos vivos: 3
+[12:01:50.997] pedido-154 proceso: 154;Cable de red;1;RECHAZADO
+[12:01:50.997] pedido-154 termino
+[12:01:50.997] pedido-155 empieza: 155;Routers;2
+[12:01:50.997] pedido-155 proceso: 155;Routers;2;RECHAZADO
+[12:01:50.997] pedido-155 termino
+[12:01:50.998] Recibido pedido 156. Hilos vivos: 2
+[12:01:50.998] pedido-156 empieza: 156;camaras;5
+[12:01:50.998] Recibido pedido 157. Hilos vivos: 3
+[12:01:50.998] pedido-157 empieza: 157;Cable de red;2
+[12:01:50.998] pedido-156 proceso: 156;camaras;5;RECHAZADO
+[12:01:50.998] pedido-156 termino
+[12:01:50.998] pedido-157 proceso: 157;Cable de red;2;RECHAZADO
+[12:01:50.999] Recibido pedido 158. Hilos vivos: 3
+[12:01:50.999] pedido-158 empieza: 158;Routers;5
+[12:01:50.999] pedido-157 termino
+[12:01:50.999] pedido-158 proceso: 158;Routers;5;RECHAZADO
+[12:01:50.999] pedido-158 termino
+[12:01:50.999] Recibido pedido 159. Hilos vivos: 3
+[12:01:51.000] Recibido pedido 160. Hilos vivos: 3
+[12:01:51.000] pedido-159 empieza: 159;Cable de red;2
+[12:01:51.000] pedido-160 empieza: 160;eliminadores;4
+[12:01:51.000] pedido-160 proceso: 160;eliminadores;4;RECHAZADO
+[12:01:51.000] pedido-159 proceso: 159;Cable de red;2;RECHAZADO
+[12:01:51.001] pedido-159 termino
+[12:01:51.001] Recibido pedido 161. Hilos vivos: 4
+[12:01:51.001] pedido-161 empieza: 161;conectores rj45;4
+[12:01:51.001] pedido-160 termino
+[12:01:51.001] pedido-161 proceso: 161;conectores rj45;4;RECHAZADO
+[12:01:51.002] pedido-162 empieza: 162;eliminadores;2
+[12:01:51.001] Recibido pedido 162. Hilos vivos: 4
+[12:01:51.002] pedido-162 proceso: 162;eliminadores;2;RECHAZADO
+[12:01:51.002] pedido-161 termino
+[12:01:51.002] pedido-162 termino
+[12:01:51.002] Recibido pedido 163. Hilos vivos: 2
+[12:01:51.002] pedido-163 empieza: 163;Cable de red;5
+[12:01:51.003] pedido-163 proceso: 163;Cable de red;5;RECHAZADO
+[12:01:51.003] pedido-163 termino
+[12:01:51.003] Recibido pedido 164. Hilos vivos: 2
+[12:01:51.003] pedido-164 empieza: 164;eliminadores;4
+[12:01:51.003] pedido-164 proceso: 164;eliminadores;4;RECHAZADO
+[12:01:51.003] pedido-164 termino
+[12:01:51.004] Recibido pedido 165. Hilos vivos: 2
+[12:01:51.004] pedido-165 empieza: 165;Routers;5
+[12:01:51.004] pedido-165 proceso: 165;Routers;5;RECHAZADO
+[12:01:51.004] pedido-165 termino
+[12:01:51.004] Recibido pedido 166. Hilos vivos: 2
+[12:01:51.004] pedido-166 empieza: 166;Cable de red;4
+[12:01:51.004] pedido-166 proceso: 166;Cable de red;4;RECHAZADO
+[12:01:51.004] pedido-166 termino
+[12:01:51.005] Recibido pedido 167. Hilos vivos: 2
+[12:01:51.005] pedido-167 empieza: 167;ponchadoras;5
+[12:01:51.005] pedido-167 proceso: 167;ponchadoras;5;RECHAZADO
+[12:01:51.005] pedido-167 termino
+[12:01:51.005] Recibido pedido 168. Hilos vivos: 2
+[12:01:51.005] pedido-168 empieza: 168;eliminadores;5
+[12:01:51.005] pedido-168 proceso: 168;eliminadores;5;RECHAZADO
+[12:01:51.005] pedido-168 termino
+[12:01:51.005] Recibido pedido 169. Hilos vivos: 3
+[12:01:51.006] pedido-169 empieza: 169;switches;2
+[12:01:51.006] Recibido pedido 170. Hilos vivos: 3
+[12:01:51.006] pedido-169 proceso: 169;switches;2;RECHAZADO
+[12:01:51.006] pedido-170 empieza: 170;eliminadores;4
+[12:01:51.006] pedido-169 termino
+[12:01:51.006] pedido-170 proceso: 170;eliminadores;4;RECHAZADO
+[12:01:51.006] pedido-170 termino
+[12:01:51.006] Recibido pedido 171. Hilos vivos: 4
+[12:01:51.006] pedido-171 empieza: 171;eliminadores;1
+[12:01:51.006] pedido-171 proceso: 171;eliminadores;1;RECHAZADO
+[12:01:51.006] pedido-171 termino
+[12:01:51.007] Recibido pedido 172. Hilos vivos: 2
+[12:01:51.007] pedido-172 empieza: 172;poe;3
+[12:01:51.007] pedido-172 proceso: 172;poe;3;RECHAZADO
+[12:01:51.007] pedido-172 termino
+[12:01:51.007] Recibido pedido 173. Hilos vivos: 2
+[12:01:51.007] pedido-173 empieza: 173;Cable de red;2
+[12:01:51.008] pedido-173 proceso: 173;Cable de red;2;RECHAZADO
+[12:01:51.008] pedido-173 termino
+[12:01:51.008] Recibido pedido 174. Hilos vivos: 2
+[12:01:51.008] pedido-174 empieza: 174;camaras;1
+[12:01:51.008] Recibido pedido 175. Hilos vivos: 3
+[12:01:51.008] pedido-175 empieza: 175;ponchadoras;2
+[12:01:51.008] pedido-175 proceso: 175;ponchadoras;2;RECHAZADO
+[12:01:51.008] pedido-174 proceso: 174;camaras;1;RECHAZADO
+[12:01:51.008] pedido-174 termino
+[12:01:51.008] pedido-175 termino
+[12:01:51.008] Recibido pedido 176. Hilos vivos: 2
+[12:01:51.009] pedido-176 empieza: 176;ponchadoras;4
+[12:01:51.009] Recibido pedido 177. Hilos vivos: 3
+[12:01:51.009] pedido-176 proceso: 176;ponchadoras;4;RECHAZADO
+[12:01:51.009] pedido-176 termino
+[12:01:51.010] pedido-177 empieza: 177;ponchadoras;2
+[12:01:51.010] pedido-177 proceso: 177;ponchadoras;2;RECHAZADO
+[12:01:51.010] pedido-177 termino
+[12:01:51.010] Recibido pedido 178. Hilos vivos: 3
+[12:01:51.010] pedido-178 empieza: 178;Cable de red;5
+[12:01:51.011] pedido-178 proceso: 178;Cable de red;5;RECHAZADO
+[12:01:51.011] Recibido pedido 179. Hilos vivos: 3
+[12:01:51.011] pedido-178 termino
+[12:01:51.011] pedido-179 empieza: 179;Routers;5
+[12:01:51.011] pedido-179 proceso: 179;Routers;5;RECHAZADO
+[12:01:51.011] pedido-179 termino
+[12:01:51.011] Recibido pedido 180. Hilos vivos: 2
+[12:01:51.011] pedido-180 empieza: 180;Routers;4
+[12:01:51.012] pedido-180 proceso: 180;Routers;4;RECHAZADO
+[12:01:51.012] Recibido pedido 181. Hilos vivos: 3
+[12:01:51.012] pedido-181 empieza: 181;eliminadores;1
+[12:01:51.012] pedido-180 termino
+[12:01:51.012] pedido-181 proceso: 181;eliminadores;1;RECHAZADO
+[12:01:51.012] pedido-181 termino
+[12:01:51.012] Recibido pedido 182. Hilos vivos: 2
+[12:01:51.012] pedido-182 empieza: 182;camaras;5
+[12:01:51.012] pedido-182 proceso: 182;camaras;5;RECHAZADO
+[12:01:51.012] pedido-182 termino
+[12:01:51.013] Recibido pedido 183. Hilos vivos: 2
+[12:01:51.013] pedido-183 empieza: 183;poe;2
+[12:01:51.013] pedido-183 proceso: 183;poe;2;RECHAZADO
+[12:01:51.013] pedido-183 termino
+[12:01:51.013] Recibido pedido 184. Hilos vivos: 2
+[12:01:51.013] pedido-184 empieza: 184;poe;3
+[12:01:51.013] Recibido pedido 185. Hilos vivos: 3
+[12:01:51.013] pedido-185 empieza: 185;Cable de red;1
+[12:01:51.013] pedido-184 proceso: 184;poe;3;RECHAZADO
+[12:01:51.014] pedido-184 termino
+[12:01:51.014] pedido-185 proceso: 185;Cable de red;1;RECHAZADO
+[12:01:51.014] pedido-185 termino
+[12:01:51.014] Recibido pedido 186. Hilos vivos: 2
+[12:01:51.014] pedido-186 empieza: 186;conectores rj45;5
+[12:01:51.014] pedido-186 proceso: 186;conectores rj45;5;RECHAZADO
+[12:01:51.014] pedido-186 termino
+[12:01:51.014] Recibido pedido 187. Hilos vivos: 2
+[12:01:51.014] pedido-187 empieza: 187;ponchadoras;4
+[12:01:51.014] pedido-187 proceso: 187;ponchadoras;4;RECHAZADO
+[12:01:51.014] pedido-187 termino
+[12:01:51.015] Recibido pedido 188. Hilos vivos: 2
+[12:01:51.015] Recibido pedido 189. Hilos vivos: 3
+[12:01:51.015] pedido-188 empieza: 188;eliminadores;2
+[12:01:51.015] pedido-189 empieza: 189;eliminadores;3
+[12:01:51.016] Recibido pedido 190. Hilos vivos: 4
+[12:01:51.015] pedido-188 proceso: 188;eliminadores;2;RECHAZADO
+[12:01:51.016] pedido-190 empieza: 190;camaras;2
+[12:01:51.016] pedido-189 proceso: 189;eliminadores;3;RECHAZADO
+[12:01:51.016] pedido-188 termino
+[12:01:51.016] pedido-190 proceso: 190;camaras;2;RECHAZADO
+[12:01:51.016] pedido-190 termino
+[12:01:51.016] pedido-189 termino
+[12:01:51.016] pedido-191 empieza: 191;ponchadoras;3
+[12:01:51.016] Recibido pedido 191. Hilos vivos: 4
+[12:01:51.016] pedido-191 proceso: 191;ponchadoras;3;RECHAZADO
+[12:01:51.017] pedido-191 termino
+[12:01:51.017] Recibido pedido 192. Hilos vivos: 2
+[12:01:51.017] pedido-192 empieza: 192;ponchadoras;4
+[12:01:51.017] pedido-192 proceso: 192;ponchadoras;4;RECHAZADO
+[12:01:51.017] pedido-192 termino
+[12:01:51.018] Recibido pedido 193. Hilos vivos: 2
+[12:01:51.018] pedido-193 empieza: 193;camaras;5
+[12:01:51.018] pedido-193 proceso: 193;camaras;5;RECHAZADO
+[12:01:51.018] pedido-193 termino
+[12:01:51.018] Recibido pedido 194. Hilos vivos: 2
+[12:01:51.018] pedido-194 empieza: 194;ponchadoras;2
+[12:01:51.019] pedido-194 proceso: 194;ponchadoras;2;RECHAZADO
+[12:01:51.019] pedido-194 termino
+[12:01:51.019] Recibido pedido 195. Hilos vivos: 2
+[12:01:51.019] pedido-195 empieza: 195;camaras;2
+[12:01:51.019] Recibido pedido 196. Hilos vivos: 3
+[12:01:51.019] pedido-195 proceso: 195;camaras;2;RECHAZADO
+[12:01:51.019] pedido-195 termino
+[12:01:51.019] pedido-196 empieza: 196;Routers;3
+[12:01:51.020] pedido-196 proceso: 196;Routers;3;RECHAZADO
+[12:01:51.020] pedido-196 termino
+[12:01:51.020] Recibido pedido 197. Hilos vivos: 2
+[12:01:51.020] pedido-197 empieza: 197;switches;4
+[12:01:51.020] pedido-197 proceso: 197;switches;4;RECHAZADO
+[12:01:51.020] pedido-197 termino
+[12:01:51.020] Recibido pedido 198. Hilos vivos: 2
+[12:01:51.021] pedido-198 empieza: 198;switches;1
+[12:01:51.021] pedido-198 proceso: 198;switches;1;RECHAZADO
+[12:01:51.021] pedido-198 termino
+[12:01:51.021] Recibido pedido 199. Hilos vivos: 2
+[12:01:51.028] pedido-199 empieza: 199;poe;4
+[12:01:51.028] pedido-199 proceso: 199;poe;4;RECHAZADO
+[12:01:51.028] pedido-199 termino
+[12:01:51.028] Recibido pedido 200. Hilos vivos: 3
+[12:01:51.028] pedido-200 empieza: 200;ponchadoras;3
+[12:01:51.029] pedido-200 proceso: 200;ponchadoras;3;RECHAZADO
+[12:01:51.029] pedido-200 termino
+[12:01:51.029] Todos los pedidos terminaron.
+[12:01:51.030] ===== RESUMEN DANYNETWORK =====
+[12:01:51.031] Pedidos recibidos: 200
+[12:01:51.031] Confirmados segun inventario: 28
+[12:01:51.031] Rechazados segun inventario: 172
+[12:01:51.031] Confirmados registrados: 28
+[12:01:51.033] ===== INVENTARIO FINAL =====
+[12:01:51.050] eliminadores | Inicial: 12 | Confirmado: 12 | Esperado: 0 | Real: 0 | Descuadre: 0
+[12:01:51.050] conectores rj45 | Inicial: 8 | Confirmado: 8 | Esperado: 0 | Real: 0 | Descuadre: 0
+[12:01:51.051] poe | Inicial: 3 | Confirmado: 3 | Esperado: 0 | Real: 0 | Descuadre: 0
+[12:01:51.051] switches | Inicial: 10 | Confirmado: 10 | Esperado: 0 | Real: 0 | Descuadre: 0
+[12:01:51.051] Routers | Inicial: 6 | Confirmado: 6 | Esperado: 0 | Real: 0 | Descuadre: 0
+[12:01:51.051] camaras | Inicial: 4 | Confirmado: 4 | Esperado: 0 | Real: 0 | Descuadre: 0
+[12:01:51.051] ponchadoras | Inicial: 15 | Confirmado: 15 | Esperado: 0 | Real: 0 | Descuadre: 0
+[12:01:51.051] Cable de red | Inicial: 2 | Confirmado: 2 | Esperado: 0 | Real: 0 | Descuadre: 0
+[12:01:51.053] Senal de apagado recibida.
+[12:01:51.053] Servidor apagado.

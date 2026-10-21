@@ -1,0 +1,3 @@
+===== CANDADO GRANDE =====
+Todo sincronizado: 2026 ms
+Trabajo independiente: 105 ms

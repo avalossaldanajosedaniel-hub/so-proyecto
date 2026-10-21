@@ -1,0 +1,23 @@
+Pedido 3 entra. Estaciones ocupadas: 3
+Pedido 1 entra. Estaciones ocupadas: 1
+Pedido 2 entra. Estaciones ocupadas: 2
+Pedido 3 sale. Estaciones ocupadas: 2
+Pedido 2 sale. Estaciones ocupadas: 1
+Pedido 1 sale. Estaciones ocupadas: 0
+Pedido 5 entra. Estaciones ocupadas: 1
+Pedido 4 entra. Estaciones ocupadas: 2
+Pedido 6 entra. Estaciones ocupadas: 3
+Pedido 5 sale. Estaciones ocupadas: 2
+Pedido 6 sale. Estaciones ocupadas: 0
+Pedido 8 entra. Estaciones ocupadas: 1
+Pedido 4 sale. Estaciones ocupadas: 1
+Pedido 7 entra. Estaciones ocupadas: 2
+Pedido 9 entra. Estaciones ocupadas: 3
+Pedido 8 sale. Estaciones ocupadas: 2
+Pedido 7 sale. Estaciones ocupadas: 0
+Pedido 9 sale. Estaciones ocupadas: 1
+Pedido 10 entra. Estaciones ocupadas: 1
+Pedido 10 sale. Estaciones ocupadas: 0
+-----------------------------
+Maximo simultaneo: 3
+Estaciones libres al final: 3

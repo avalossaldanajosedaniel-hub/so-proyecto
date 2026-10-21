@@ -1,0 +1,6 @@
+===== CANDADO PEQUENO =====
+Stock inicial: 10
+Confirmadas: 50
+Stock final: 9
+Stock esperado: -40
+Descuadre: 49

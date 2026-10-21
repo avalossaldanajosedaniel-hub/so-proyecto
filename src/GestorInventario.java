@@ -12,13 +12,13 @@ public class GestorInventario {
     private int ventasConfirmadas = 0;
     private int ventasRechazadas = 0;
 
-    public void agregar(String producto, int cantidad) {
+    public synchronized void agregar(String producto, int cantidad) {
         existencias.put(producto, cantidad);
     }
 
-    // Semana 5: SIN synchronized para demostrar
-    // una condicion de carrera.
-    public boolean vender(String producto, int cantidad) {
+    // Semana 6: exclusion mutua.
+	// Protege la lectura, validacion y actualizacion del inventario.
+	public synchronized boolean vender(String producto, int cantidad) {
 
         Integer disponible = existencias.get(producto);
 
@@ -30,12 +30,12 @@ public class GestorInventario {
         if (disponible >= cantidad) {
 
             // Amplia la ventana de la condicion de carrera.
-            try {
-                Thread.sleep(1);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                return false;
-            }
+           try { Thread.sleep(1);
+	} catch (InterruptedException e) {
+   	 Thread.currentThread().interrupt();
+   	 ventasRechazadas++;
+    	return false;
+	}
 
             existencias.put(producto, disponible - cantidad);
             ventasConfirmadas++;
@@ -46,15 +46,15 @@ public class GestorInventario {
         return false;
     }
 
-    public int existencia(String producto) {
+    public synchronized  int existencia(String producto) {
         return existencias.getOrDefault(producto, 0);
     }
 
-    public int getVentasConfirmadas() {
+    public synchronized int getVentasConfirmadas() {
         return ventasConfirmadas;
     }
 
-    public int getVentasRechazadas() {
+    public synchronized  int getVentasRechazadas() {
         return ventasRechazadas;
     }
 

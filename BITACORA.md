@@ -68,7 +68,12 @@ Ya tenía instalada una máquina virtual con Linux. Esperaré a saber cuáles so
 | **Namespace de Red (Net)** | Aislamiento de pila de red | Otorga una interfaz de red, tabla de rutas y puertos independientes. | Tiene sus propias interfaces de red virtuales y puertos libres para abrir sin conflictos con la máquina host. |
 | **Cgroup (256 MB)** | Limitación de recursos de hardware | Define la cuota máxima de memoria RAM utilizable. | El sistema limita el consumo a 256 MB. Si el servidor sobrepasa esta cuota, el kernel ejecuta el **OOM Killer** y detiene el proceso inmediatamente. |
 
+
+
 ---
+
+### 3. Predicción de una condición de carrera
+
 
 ## Semana 3
 
@@ -114,6 +119,143 @@ Además, el formato `ID;PRODUCTO;CANTIDAD` facilita guardar los pedidos en archi
 * Preparé el catálogo de productos en `datos/catalogo.txt`, con ocho productos y existencias bajas para las futuras pruebas del inventario.
 * Adapté el generador para producir pedidos que utilicen productos incluidos en el catálogo.
 ---
+# Bitácora — Semana 4: Procesos, hilos y memoria
+
+## Antes de la clase
+
+### 1. Estados de un hilo
+
+En el sistema de pedidos de DanyNetwork, un hilo puede pasar por diferentes estados durante la atención de un pedido:
+
+* **NEW (nuevo):** Se crea el hilo encargado de atender el pedido, pero todavía no se ha iniciado.
+* **RUNNABLE (ejecutable):** El hilo se inicia con `start()` y puede estar ejecutándose o esperando tiempo de CPU.
+* **BLOCKED (bloqueado):** Puede ocurrir si intenta entrar a una sección sincronizada cuyo bloqueo está ocupado por otro hilo.
+* **WAITING (esperando):** Puede ocurrir cuando el hilo espera indefinidamente una acción de otro hilo, por ejemplo, mediante `join()`.
+* **TIMED_WAITING (espera temporizada):** Ocurre cuando el hilo ejecuta `Thread.sleep()`, porque debe esperar un tiempo determinado.
+* **TERMINATED (terminado):** El hilo acaba de procesar el pedido y termina su ejecución.
+
+En DanyNetwork, un hilo puede comenzar en estado `NEW`, pasar a `RUNNABLE` al iniciarse, entrar en `TIMED_WAITING` durante la simulación de la atención y finalmente llegar a `TERMINATED`.
+
+---
+
+### 2. Stack, heap y recursos compartidos
+
+| Elemento | Ubicación o tipo | Explicación |
+| --- | --- | --- |
+| **Variable local `cantidad`** | Stack del hilo | Cada ejecución del método que la declara tiene su propio contexto de variables locales. |
+| **Objeto `Pedido`** | Heap | El objeto se crea dinámicamente y puede ser referenciado por el hilo que lo procesa. |
+| **Variable estática `piezasVendidas`** | Heap, asociada a la clase | Es compartida por los hilos que acceden a ella. |
+| **Archivo de registro abierto** | Recurso del sistema operativo | El programa puede mantener un descriptor de archivo para escribir información. |
+
+Cada hilo tiene su propia pila de ejecución (*Stack*). En cambio, los objetos creados dinámicamente (*Heap*) y los campos estáticos compartidos pueden ser accedidos por distintos hilos, según las referencias que tengan.
+
+---
+
+### 3. Predicción de una condición de carrera
+
+Si dos hilos ejecutan al mismo tiempo la instrucción:
+
+java
+piezasVendidas = piezasVendidas + 1;
+
+Puede ocurrir una **condición de carrera** porque la operación incluye leer el valor, sumarle uno y escribir el resultado. Estas acciones no forman una operación atómica.
+
+Por ejemplo, si el valor inicial es `10`, ambos hilos pueden leer `10` y calcular `11`. Si los dos escriben `11`, el contador termina en `11` en vez de `12`.
+
+Por esta razón, el contador puede mostrar menos incrementos que los esperados. Sin embargo, el resultado depende de la planificación de los hilos y no necesariamente fallará en todas las ejecuciones.
+
+---
+
+## Durante la clase
+
+### 4. Implementación concurrente
+
+El servidor de pedidos de DanyNetwork recibe líneas con el formato `ID;PRODUCTO;CANTIDAD`. Cada pedido válido se procesa en un hilo independiente. El servidor registra la hora de recepción, el inicio y el final de la atención.
+
+### 5. Experimento de concurrencia
+
+Se ejecuta el generador con 1000 pedidos y se conecta su salida al servidor mediante una tubería. La prueba se repite cinco veces para observar si el contador compartido pierde incrementos.
+
+Se registran los resultados reales de cada ejecución, sin asumir que necesariamente habrá una diferencia.
+
+### 6. Evidencia de procesos e hilos
+
+Durante el procesamiento se ejecuta el comando:
+
+bash
+ps -o pid,nlwp,stat,cmd -C java
+para observar los procesos Java, el número de hilos y su estado. La salida se guarda en `evidencias/hilos.txt`.
+
+---
+
+## Resultados de las cinco ejecuciones
+
+Ejecuté cinco veces el generador de pedidos con 1000 pedidos por ejecución, conectándolo al servidor mediante una tubería en Kali Linux.
+
+| Ejecución | Pedidos recibidos | Piezas según el contador |
+| :---: | :---: | :---: |
+| 1 | 1000 | 999 |
+| 2 | 1000 | 996 |
+| 3 | 1000 | 999 |
+| 4 | 1000 | 998 |
+| 5 | 1000 | 998 |
+
+En todas las ejecuciones, el servidor recibió los 1000 pedidos. Sin embargo, el contador compartido terminó con valores entre 996 y 999.
+
+Esto demuestra que se pueden perder incrementos cuando varios hilos modifican una variable compartida sin sincronización. La operación de incrementar el contador no es atómica y puede ser interrumpida por la ejecución de otro hilo.
+
+---
+
+## Conclusión del experimento
+
+La concurrencia permite atender varios pedidos simultáneamente en DanyNetwork, pero también puede producir inconsistencias en los datos compartidos. Para evitar esta condición de carrera se podría utilizar `synchronized` o `AtomicInteger`. En esta práctica se mantuvo el contador sin protección para observar el problema.
+
+# Avance del proyecto
+
+**Proyecto:** DanyNetwork — Semana 4
+
+Durante esta semana adapté el servidor de pedidos de DanyNetwork para atender solicitudes concurrentemente.
+
+El sistema utiliza dos procesos Java: `GeneradorPedidos` y `ServidorPedidos`. Ambos se comunican mediante una tubería anónima. El generador produce pedidos con el formato `ID;PRODUCTO;CANTIDAD`, mientras que el servidor crea un hilo para procesar cada pedido.
+
+Cada hilo convierte la información recibida en un objeto `Pedido`, simula su atención y muestra los datos mediante el método `toString()`.
+
+---
+
+## Diferencia entre proceso e hilo
+
+Un **proceso** tiene su propio espacio de memoria y recursos administrados por el sistema operativo. Un **hilo** es una unidad de ejecución dentro de un proceso y comparte memoria y recursos con los demás hilos de ese mismo proceso.
+
+---
+
+## Razones para utilizar hilos
+
+1. **Atención concurrente:** Los hilos permiten atender pedidos al mismo tiempo. En la prueba de diez pedidos con una espera de dos segundos, las atenciones comenzaron casi simultáneamente y finalizaron aproximadamente dos segundos después.
+2. **Uso compartido de memoria:** Los hilos permiten compartir objetos y variables dentro del servidor sin establecer una nueva comunicación entre procesos para cada pedido. Esta característica facilita la atención concurrente, pero exige controlar el acceso a los datos compartidos.
+
+---
+
+## Resultados del contador compartido
+
+| Ejecución | Pedidos recibidos | Contador |
+| :---: | :---: | :---: |
+| 1 | 1000 | 999 |
+| 2 | 1000 | 996 |
+| 3 | 1000 | 999 |
+| 4 | 1000 | 998 |
+| 5 | 1000 | 998 |
+
+---
+
+## Hipótesis
+
+Los valores inferiores a 1000 se deben a que varios hilos pueden leer y modificar simultáneamente la variable `piezasVendidas`. Como la operación de incremento no está sincronizada, algunos resultados se sobrescriben y se pierden incrementos.
+
+---
+
+## Conclusión del avance
+
+DanyNetwork pasó de recibir y registrar pedidos a procesarlos concurrentemente. Se conservaron las funcionalidades previas del proyecto y se incorporaron hilos, medición de tiempos y observación de condiciones de carrera.
 
 ## Semana 5
 

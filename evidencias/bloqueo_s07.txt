@@ -1,0 +1,7 @@
+Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+PID: 275531
+Hilos iniciados. Deadlock intencional.
+Cajero 1: tomo INVENTARIO
+Cajero 2: tomo REGISTRO_VENTAS
+Cajero 2: quiero INVENTARIO
+Cajero 1: quiero REGISTRO_VENTAS

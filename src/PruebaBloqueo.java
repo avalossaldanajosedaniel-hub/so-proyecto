@@ -1,41 +1,90 @@
-// PruebaBloqueo.java - simulación de interbloqueo entre BD y Log
+
+import java.util.concurrent.CountDownLatch;
+
+// SEMANA 7 - DanyNetwork
+// Interbloqueo provocado intencionalmente.
+// Este programa es evidencia academica, NO un error
+// pendiente de corregir ni codigo de produccion.
+
 public class PruebaBloqueo {
 
-    static final Object BASE_DATOS = new Object();
-    static final Object LOG_SISTEMA = new Object();
+    static final Object INVENTARIO = new Object();
+    static final Object REGISTRO_VENTAS = new Object();
+
+    static final CountDownLatch preparados =
+            new CountDownLatch(2);
 
     public static void main(String[] args) {
-        System.out.println("PID " + ProcessHandle.current().pid());
+
+        System.out.println(
+            "PID: " + ProcessHandle.current().pid()
+        );
 
         Thread hilo1 = new Thread(() -> {
-            synchronized (BASE_DATOS) {
-                System.out.println("hilo-1: tomo BASE_DATOS");
-                dormir(500);
-                System.out.println("hilo-1: quiero LOG_SISTEMA");
-                synchronized (LOG_SISTEMA) {
-                    System.out.println("hilo-1: tengo los dos");
+
+            synchronized (INVENTARIO) {
+
+                System.out.println(
+                    "Cajero 1: tomo INVENTARIO"
+                );
+
+                esperarAlOtro();
+
+                System.out.println(
+                    "Cajero 1: quiero REGISTRO_VENTAS"
+                );
+
+                synchronized (REGISTRO_VENTAS) {
+                    System.out.println(
+                        "Cajero 1: tengo los dos"
+                    );
                 }
             }
-        }, "hilo-1");
+
+        }, "Cajero-Inventario");
 
         Thread hilo2 = new Thread(() -> {
-            synchronized (LOG_SISTEMA) { // Orden invertido a propósito
-                System.out.println("hilo-2: tomo LOG_SISTEMA");
-                dormir(500);
-                System.out.println("hilo-2: quiero BASE_DATOS");
-                synchronized (BASE_DATOS) {
-                    System.out.println("hilo-2: tengo los dos");
+
+            // Orden invertido A PROPOSITO para crear deadlock.
+            synchronized (REGISTRO_VENTAS) {
+
+                System.out.println(
+                    "Cajero 2: tomo REGISTRO_VENTAS"
+                );
+
+                esperarAlOtro();
+
+                System.out.println(
+                    "Cajero 2: quiero INVENTARIO"
+                );
+
+                synchronized (INVENTARIO) {
+                    System.out.println(
+                        "Cajero 2: tengo los dos"
+                    );
                 }
             }
-        }, "hilo-2");
+
+        }, "Cajero-Registro");
 
         hilo1.start();
         hilo2.start();
 
-        System.out.println("Hilos iniciados. Si no ves 'tengo los dos', hay bloqueo.");
+        System.out.println(
+            "Hilos iniciados. Deadlock intencional."
+        );
     }
 
-    static void dormir(long ms) {
-        try { Thread.sleep(ms); } catch (InterruptedException e) { }
+    static void esperarAlOtro() {
+
+        preparados.countDown();
+
+        try {
+            preparados.await();
+
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }
+

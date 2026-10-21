@@ -1,0 +1,2 @@
+    PID STAT %CPU     ELAPSED CMD
+ 275531 SNl   0.9       00:10 java -cp src PruebaBloqueo

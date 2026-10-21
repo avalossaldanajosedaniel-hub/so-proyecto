@@ -598,7 +598,7 @@ Pide candado LOG                       Pide candado INVENTARIO
 
 ## Bloque 2: Diagnóstico de Interbloqueo (jstack)
 
-Fragmento clave extraído de `evidencias/deadlock.txt` que demuestra el interbloqueo real:
+Fragmento clave extraído de `evidencias/jstack_bloqueo_s07.txt` que demuestra el interbloqueo real:
 
 "hilo-1" #20 [18671] prio=5 os_prio=0 ... java.lang.Thread.State: BLOCKED (on object monitor)
         at PruebaBloqueo.lambda$main$0(PruebaBloqueo.java:16)
@@ -622,6 +622,85 @@ Fragmento clave extraído de `evidencias/deadlock.txt` que demuestra el interblo
 | **Funciona con código de terceros?** | No (requiere control absoluto sobre el orden de los candados). | Sí (permite abortar la espera si una biblioteca externa retiene el recurso). |
 | **Qué problema nuevo introduce** | Ninguno (siempre que se respete estrictamente la jerarquía). | Livelock (si los hilos chocan y reintentan en bucle) y complejidad en los bloques `finally`. |
 
+### Avance del proyecto — Semana 7
+
+#### Interbloqueos en DanyNetwork
+
+Un interbloqueo (*deadlock*) ocurre cuando dos o más hilos esperan indefinidamente recursos que están ocupados por otros hilos.
+
+Las cuatro condiciones necesarias para que ocurra son:
+
+1. **Exclusión mutua:** un recurso solo puede ser utilizado por un hilo a la vez.
+2. **Retención y espera:** un hilo mantiene un recurso mientras espera otro.
+3. **Sin expropiación:** no se puede retirar forzosamente el candado que posee otro hilo.
+4. **Espera circular:** varios hilos forman un ciclo de dependencias entre recursos.
+
+#### Experimento realizado
+
+Se creó `PruebaBloqueo.java` utilizando los recursos INVENTARIO y REGISTRO_VENTAS.
+
+El Cajero-Inventario tomó el primer recurso y esperó el segundo. Simultáneamente, Cajero-Registro tomó el segundo recurso y esperó el primero.
+
+El interbloqueo fue provocado intencionalmente como evidencia académica.
+
+#### Diagnóstico en Linux
+
+Se ejecutaron los comandos:
+
+```bash
+ps -p "$PID_BLOQUEO" -o pid,stat,%cpu,etime,cmd
+jstack -l "$PID_BLOQUEO"
+grep -A 35 "Found one Java-level deadlock" evidencias/jstack_bloqueo_s07.txt
+```
+
+La herramienta `jstack` confirmó:
+
+```text
+Found one Java-level deadlock:
+
+"Cajero-Inventario":
+  waiting to lock monitor
+  which is held by "Cajero-Registro"
+
+"Cajero-Registro":
+  waiting to lock monitor
+  which is held by "Cajero-Inventario"
+
+Found 1 deadlock.
+```
+
+#### Comparación entre proceso bloqueado y ocioso
+
+**Proceso bloqueado:**
+
+```text
+PID     STAT  %CPU  ELAPSED  CMD
+275531  SNl   0.9   00:10   java -cp src PruebaBloqueo
+```
+
+**Proceso ocioso:**
+
+[PID     STAT  %CPU  ELAPSED  CMD
+279740  SNl   2.0   00:02   java -cp src PruebaOcioso
+
+Ambos procesos pueden aparecer en estado de espera y con poco consumo de CPU. El comando `ps` no permite identificar por sí solo si existe un interbloqueo de hilos Java.
+
+Para distinguirlos se utiliza `jstack`, que muestra qué monitores están retenidos y cuáles esperan los hilos.
+
+#### Prevención aplicada
+
+Se decidió romper la condición de espera circular mediante un orden global de candados:
+
+1. INVENTARIO.
+2. REGISTRO_VENTAS.
+
+En el servidor real se comprobó que `inventario.vender()` libera su candado antes de que se ejecute `synchronized(confirmados)`.
+
+Por lo tanto, en esa operación no hay adquisición anidada de ambos candados y no se identificó una espera circular.
+
+#### Conclusión
+
+La práctica permitió provocar, identificar y diagnosticar un interbloqueo intencional. También se comprobó que la ruta de venta del servidor real utiliza los candados por separado, y se documentó una política global para prevenir futuras esperas circulares.
 ---
 
 # Semana 8

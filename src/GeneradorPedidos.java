@@ -11,12 +11,15 @@ public class GeneradorPedidos {
         int cuantos = Integer.parseInt(args[0]);
 
         String[] productos = {
-            "Router Gigabit",
-            "Switch 24 Puertos",
-            "Cable UTP Cat6",
-            "Access Point WiFi 6",
-            "Patch Cord Fibra"
-        };
+  	  "eliminadores",
+  	  "conectores rj45",
+  	  "poe",
+  	  "switches",
+   	 "Routers",
+   	 "camaras",
+   	 "ponchadoras",
+   	 "Cable de red"
+	};
 
         Random random = new Random();
 

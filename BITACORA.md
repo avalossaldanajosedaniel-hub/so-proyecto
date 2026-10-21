@@ -301,6 +301,98 @@ DanyNetwork pasó de recibir y registrar pedidos a procesarlos concurrentemente.
 1. **Síntoma obtenido:** Sobreventa por pérdida de actualizaciones debido a condiciones de carrera. Se observa con mayor claridad en la **Corrida 3 y 5**, donde a pesar de confirmarse 10 ventas, la existencia final quedó en `7` en lugar de `0`.
 2. **Costo en el negocio:** Incumplimiento de contratos de instalación, pérdida de confianza y la obligación de reembolsar o reabastecer de emergencia equipo escaso.
 
+# Semana 5 — Inventario compartido y condición de carrera
+
+**Proyecto:** DanyNetwork
+
+---
+
+## ¿Qué es una condición de carrera?
+
+Una **condición de carrera** ocurre cuando varios hilos acceden y modifican información compartida al mismo tiempo y el resultado depende del orden en que se ejecutan.
+
+En DanyNetwork, varios pedidos pueden consultar la misma existencia disponible antes de que alguno actualice el inventario. Esto puede provocar que se confirmen más ventas de las que realmente permite el stock.
+
+---
+
+## Sección crítica del servidor
+
+La sección crítica está dentro del método `vender()` de `GestorInventario.java`, que es llamado por los hilos de `ServidorPedidos.java`.
+
+java
+Integer disponible = existencias.get(producto);
+
+if (disponible >= cantidad) {
+    Thread.sleep(1);
+    existencias.put(producto, disponible - cantidad);
+    ventasConfirmadas++;
+}
+
+El problema es que la lectura, validación y actualización de las existencias no están protegidas como una sola operación.
+
+---
+
+## Tabla de intercalado
+
+Ejemplo con seis routers disponibles:
+
+| Paso | Hilo A (4 routers) | Hilo B (3 routers) |
+| :---: | --- | --- |
+| **1** | Lee 6 disponibles | |
+| **2** | | Lee 6 disponibles |
+| **3** | Verifica que puede vender 4 | |
+| **4** | | Verifica que puede vender 3 |
+| **5** | Actualiza existencia a 2 | |
+| **6** | | Actualiza existencia a 3 |
+| **7** | Confirma la venta | Confirma la venta |
+
+Ambos hilos confirman siete unidades en total, aunque solamente había seis.
+
+---
+
+## Resultados experimentales
+
+En la prueba de 20 pedidos no se observó ningún descuadre.
+
+En la prueba de 1000 pedidos se obtuvieron los siguientes resultados:
+
+* **Pedidos recibidos:** 1000
+* **Confirmados según inventario:** 28
+* **Rechazados según inventario:** 968
+* **Confirmados registrados:** 28
+* **Eliminadores:** 12 iniciales, 16 confirmados, existencia final 0 y descuadre de +4
+* **Ponchadoras:** 15 iniciales, 17 confirmadas, existencia final 0 y descuadre de +2
+
+Se observaron seis unidades de descuadre entre ambos productos. Además, los contadores registraron 996 pedidos en total, aunque el servidor recibió 1000.
+
+---
+
+## ¿Por qué es diferente de otros errores?
+
+A diferencia de los errores de sintaxis o de lógica secuencial, una condición de carrera puede aparecer solamente en algunas ejecuciones. El resultado depende de cómo el sistema operativo distribuye el tiempo de CPU entre los hilos.
+
+Esto hace que el error sea difícil de reproducir y depurar.
+
+---
+
+## Posibles soluciones
+
+Tres alternativas técnicas para evitar la condición de carrera son:
+
+1. **`synchronized`:** Permite proteger el método o bloque crítico mediante exclusión mutua.
+2. **`ReentrantLock`:** Permite controlar explícitamente el acceso a la sección crítica.
+3. **Actualizaciones atómicas:** Pueden proteger contadores; para coordinar correctamente la validación y descuento de inventario se necesitaría una estrategia atómica para toda la operación.
+
+Considero que `synchronized` es la opción más adecuada para este proyecto porque permite proteger el método `vender()` con cambios mínimos.
+
+---
+
+## Conclusión
+
+Logré integrar el inventario de DanyNetwork al servidor concurrente y demostrar que las ventas simultáneas pueden generar inconsistencias en las existencias y en los contadores.
+
+La condición de carrera se conserva intencionalmente para realizar la comparación antes y después de implementar exclusión mutua en la siguiente semana.
+
 ---
 
 ## Semana 6

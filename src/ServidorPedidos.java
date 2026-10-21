@@ -7,6 +7,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 public class ServidorPedidos {
 
@@ -15,34 +17,40 @@ public class ServidorPedidos {
     static volatile boolean apagando = false;
 
     static int contador = 0;
-    static int piezasVendidas = 0;
+
+    // Inventario compartido entre todos los hilos.
+    static GestorInventario inventario = new GestorInventario();
 
     static final List<Thread> hilos = new ArrayList<>();
 
+    // Registro de pedidos confirmados para comprobar descuadres.
+    static final List<Pedido> confirmados = new ArrayList<>();
+
     public static void main(String[] args) throws Exception {
+
+        // Cargar el inventario antes de iniciar los hilos.
+        inventario.cargarDesde("datos/catalogo.txt");
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             apagando = true;
             registrar("Senal de apagado recibida.");
-            registrar("Resumen final:");
-            registrar("  Pedidos recibidos: " + contador);
-            registrar("  Piezas vendidas segun el contador: "
-                    + piezasVendidas);
             registrar("Servidor apagado.");
         }, "apagado"));
 
         long pid = ProcessHandle.current().pid();
 
         registrar("Servidor de " + NEGOCIO + " listo. PID " + pid);
+        registrar("Inventario cargado desde datos/catalogo.txt");
         registrar("Formato: ID;PRODUCTO;CANTIDAD");
 
-        // Leer pedidos desde la consola o una tuberia anonima.
+        // Leer pedidos desde la consola o tuberia anonima.
         try (BufferedReader entrada = new BufferedReader(
                 new InputStreamReader(System.in))) {
 
             String linea;
 
             while (!apagando && (linea = entrada.readLine()) != null) {
+
                 if (linea.trim().equalsIgnoreCase("salir")) {
                     break;
                 }
@@ -53,13 +61,14 @@ public class ServidorPedidos {
             }
         }
 
-        // Leer pedidos desde el archivo/FIFO si existe.
+        // Conservar la lectura opcional del FIFO.
         File archivoFifo = new File("datos/cajero.pipe");
 
         if (!apagando
-        && args.length > 0
-        && args[0].equals("--fifo")
-        && archivoFifo.exists()) {
+                && args.length > 0
+                && args[0].equals("--fifo")
+                && archivoFifo.exists()) {
+
             try (BufferedReader fifo = new BufferedReader(
                     new FileReader(archivoFifo))) {
 
@@ -76,23 +85,24 @@ public class ServidorPedidos {
             }
         }
 
-        // Esperar a que terminen todos los hilos antes de salir.
+        // Esperar a todos los hilos antes de mostrar el resumen.
         for (Thread hilo : hilos) {
             hilo.join();
         }
 
-        registrar("Todos los pedidos recibidos terminaron.");
+        registrar("Todos los pedidos terminaron.");
+        mostrarResumen();
     }
 
     static void recibirPedido(String linea) {
 
         contador++;
 
-        final String pedido = linea.trim();
+        final String datos = linea.trim();
         final int numero = contador;
 
         Thread hilo = new Thread(
-                () -> atender(pedido, numero),
+                () -> atender(datos, numero),
                 "pedido-" + numero
         );
 
@@ -107,7 +117,7 @@ public class ServidorPedidos {
 
         String nombreHilo = Thread.currentThread().getName();
 
-        registrar(nombreHilo + " empieza a atender: " + linea);
+        registrar(nombreHilo + " empieza: " + linea);
 
         try {
             String[] campos = linea.split(";", -1);
@@ -128,23 +138,90 @@ public class ServidorPedidos {
 
             Pedido pedido = new Pedido(id, producto, cantidad);
 
-            // Simular el tiempo de atencion del pedido.
-            Thread.sleep(1);
+            // SECCION CRITICA DE LA SEMANA 5:
+            // Varios hilos llaman al mismo inventario.
+            // No se sincroniza para demostrar el descuadre.
+            boolean vendido = inventario.vender(
+                    pedido.getProducto(),
+                    pedido.getCantidad()
+            );
 
-            // Intencionalmente sin sincronizacion para la practica.
-            piezasVendidas = piezasVendidas + 1;
+            if (vendido) {
+                pedido.setEstado("CONFIRMADO");
 
-            registrar(nombreHilo + " proceso el pedido: " + pedido);
+                // Solo sincronizamos el registro de evidencia.
+                // NO sincronizamos la venta del inventario.
+                synchronized (confirmados) {
+                    confirmados.add(pedido);
+                }
+
+            } else {
+                pedido.setEstado("RECHAZADO");
+            }
+
+            registrar(nombreHilo + " proceso: " + pedido);
 
         } catch (NumberFormatException e) {
-            registrar(nombreHilo + ": ID o cantidad no numericos");
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            registrar(nombreHilo + " fue interrumpido");
-            return;
+            registrar(nombreHilo + ": datos numericos incorrectos");
         }
 
         registrar(nombreHilo + " termino");
+    }
+
+    static void mostrarResumen() {
+
+        registrar("===== RESUMEN DANYNETWORK =====");
+        registrar("Pedidos recibidos: " + contador);
+
+        registrar("Confirmados segun inventario: "
+                + inventario.getVentasConfirmadas());
+
+        registrar("Rechazados segun inventario: "
+                + inventario.getVentasRechazadas());
+
+        registrar("Confirmados registrados: " + confirmados.size());
+
+        // Sumar las unidades de cada producto confirmado.
+        Map<String, Integer> unidadesConfirmadas = new HashMap<>();
+
+        for (Pedido pedido : confirmados) {
+            String producto = pedido.getProducto();
+            int cantidad = pedido.getCantidad();
+
+            unidadesConfirmadas.merge(producto, cantidad, Integer::sum);
+        }
+
+        registrar("===== INVENTARIO FINAL =====");
+
+        // Comparar contra las existencias iniciales del catalogo.
+        try (BufferedReader lector = new BufferedReader(
+                new FileReader("datos/catalogo.txt"))) {
+
+            String linea;
+
+            while ((linea = lector.readLine()) != null) {
+
+                String[] campos = linea.split(";");
+
+                if (campos.length != 4) continue;
+
+                String producto = campos[1].trim();
+                int inicial = Integer.parseInt(campos[3].trim());
+                int vendido = unidadesConfirmadas.getOrDefault(producto, 0);
+                int esperado = inicial - vendido;
+                int real = inventario.existencia(producto);
+
+                registrar(producto
+                        + " | Inicial: " + inicial
+                        + " | Confirmado: " + vendido
+                        + " | Esperado: " + esperado
+                        + " | Real: " + real
+                        + " | Descuadre: " + (real - esperado));
+            }
+
+        } catch (Exception e) {
+            registrar("Error al generar resumen: " + e.getMessage());
+        }
     }
 
     static void registrar(String mensaje) {
@@ -154,11 +231,12 @@ public class ServidorPedidos {
         System.out.println("[" + hora + "] " + mensaje);
     }
 
-    // Permite lanzar el generador como proceso hijo.
+    // Conserva la funcionalidad de lanzar un proceso hijo.
     static void recibirDelGenerador(int cuantos) throws Exception {
 
         ProcessBuilder pb = new ProcessBuilder(
-                "java", "GeneradorPedidos", String.valueOf(cuantos));
+                "java", "-cp", "src",
+                "GeneradorPedidos", String.valueOf(cuantos));
 
         pb.redirectError(ProcessBuilder.Redirect.INHERIT);
 

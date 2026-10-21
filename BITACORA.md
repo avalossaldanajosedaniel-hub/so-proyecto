@@ -85,6 +85,34 @@ Ya tenía instalada una máquina virtual con Linux. Esperaré a saber cuáles so
 * **¿Por qué el hijo no puede modificar una variable del servidor?**
   Esto se debe al **aislamiento del espacio de memoria virtual** del sistema operativo. Cuando un proceso padre crea un proceso hijo, el kernel le asigna una tabla de páginas de memoria totalmente independiente. La Unidad de Gestión de Memoria (MMU) impide estrictamente que un proceso escriba en la memoria asignada a otro proceso.
 
+# Avance del proyecto
+
+## 1. ¿Qué es un contenedor y por qué no es una máquina virtual?
+
+Un contenedor es una forma de ejecutar una aplicación de manera aislada de otros programas. Contiene la aplicación y los elementos que necesita para funcionar, como sus bibliotecas y dependencias. No es una máquina virtual porque no necesita ejecutar un sistema operativo completo independiente, sino que comparte el kernel del sistema operativo del equipo anfitrión. Por eso, normalmente los contenedores son más ligeros y rápidos de iniciar que las máquinas virtuales.
+
+## 2. ¿Qué guarda el sistema operativo en el descriptor de un proceso y para qué sirve?
+
+El sistema operativo mantiene información de cada proceso en una estructura llamada descriptor de proceso. En ella guarda datos como:
+
+* El identificador del proceso (`PID`)
+* Su estado
+* Los registros de la CPU
+* La información necesaria para administrar la memoria y los recursos que tiene abiertos
+
+Esta información le permite al sistema operativo controlar la ejecución de los procesos, cambiar entre ellos y administrar los recursos del equipo.
+
+## 3. ¿Qué datos tiene un pedido en mi dominio y por qué los elegí?
+
+Mi proyecto está basado en una farmacia. Cada pedido tiene un identificador, el nombre del producto y la cantidad solicitada. Elegí estos datos porque permiten identificar cada pedido, conocer qué medicamento se necesita y determinar cuántas unidades se deben entregar.
+
+Además, el formato `ID;PRODUCTO;CANTIDAD` facilita guardar los pedidos en archivos de texto y permite que posteriormente el servidor central pueda leerlos y convertirlos nuevamente en objetos de Java.
+
+# Avance realizado
+
+* Creé la clase `Pedido.java` con sus atributos, constructor, métodos getters y método `toString()`.
+* Preparé el catálogo de productos en `datos/catalogo.txt`, con ocho productos y existencias bajas para las futuras pruebas del inventario.
+* Adapté el generador para producir pedidos que utilicen productos incluidos en el catálogo.
 ---
 
 ## Semana 5

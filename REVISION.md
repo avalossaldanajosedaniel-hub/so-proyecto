@@ -20,3 +20,39 @@ Bloque 1 y bloque 2 presentes, y tus cinco corridas (existencia final 9, 8, 7, 8
 
 ### Nota rápida (2026-10-06)
 Tu `evidencias/carrera_resuelta.txt` tiene diez líneas de `true` y cinco de `false`: parece que quedaron mezcladas dos salidas (la de antes y la de después). Deja solo las cinco corridas de la versión protegida, y borra `BITACORA.md.save` y `src/GestorInventario.java.save` si existen (son respaldos de nano).
+
+## Revision 1 (semana 9)
+
+| Instrumento | Peso | Nivel |
+|---|---|---|
+| Evidencias | 50% | Suficiente |
+| BITACORA.md | 30% | Suficiente |
+| Preguntas | 20% | Excelente |
+
+### Evidencias
+
+Catálogo con 9 productos y carrera demostrada y resuelta. Pero
+`evidencias/deadlock.txt` y `evidencias/senales.txt` no existen: el punto 8
+(interbloqueo) y parte del punto 9 (señales) no tienen evidencia. El README
+nunca llegó a fijar el dominio ("DOMINIO no elegido" sigue en el encabezado,
+aunque el resto del proyecto ya tiene catálogo y código funcionando con un
+dominio real). Varios commits de "sNN proyecto" de semanas 3 a 6 están todos
+fechados el mismo día (2026-10-21), lo que sugiere que se escribieron de
+golpe cerca de la fecha de entrega en vez de repartidos.
+
+### BITACORA.md
+
+El contenido está (646 líneas) pero la estructura es desordenada: hay
+encabezados de semana duplicados y bloques de la semana 5 y 6 repetidos con
+distinto formato, como si se hubiera reescrito varias veces sin limpiar.
+
+### Preguntas
+
+Las dos excelentes: explica bien por qué `SIGKILL` no se puede atrapar y
+cómo se comunican su generador y su servidor sin memoria compartida.
+
+### Para la siguiente revisión
+
+Fijar el dominio en el README, agregar `evidencias/deadlock.txt` y
+`evidencias/senales.txt`, y ordenar la bitácora en una sola sección por
+semana sin duplicados.

@@ -723,3 +723,383 @@ TABLA DE MECANISMOS:
 PEDIDOS PERDIDOS:
 **Con SIGTERM:** Se perdieron `0` pedidos (o los estrictamente no iniciados), ya que el servidor completó el vaciado de su cola de trabajo de forma ordenada gracias al cierre limpio.
   * **Con SIGKILL:** Se perdieron una cantidad considerable de pedidos en curso, ya que el proceso fue interrumpido de golpe en plena transacción de inventario sin oportunidad de vaciar el búfer ni generar el reporte final.
+
+
+# Semana 10
+##Antes de la clase 
+
+#### Bloque 1: Cómo reparte el turno el sistema operativo
+
+
+**Planificador (Scheduler):**
+
+Es el componente del sistema operativo encargado de decidir
+qué proceso utilizará el CPU y durante cuánto tiempo,
+considerando los procesos disponibles y sus prioridades.
+
+**Quantum:**
+
+Es el tiempo máximo asignado a un proceso antes de que
+el sistema operativo pueda retirarle el procesador
+para permitir que otro proceso se ejecute.
+
+**Cambio de contexto:**
+
+Es el procedimiento mediante el cual el sistema operativo
+guarda el estado de un proceso y recupera el estado de
+otro, permitiendo alternar su ejecución.
+
+**Planificación expropiativa:**
+
+Permite que el sistema operativo interrumpa un proceso
+sin que este tenga que ceder voluntariamente el CPU.
+
+**Planificación cooperativa:**
+
+El proceso conserva el CPU hasta que termina, se bloquea
+o lo cede voluntariamente.
+
+#### 2. Políticas de planificación
+
+| Política | Funcionamiento | Desventaja |
+|---|---|---|
+| FIFO | Primero en llegar, primero en salir | Efecto convoy |
+| SJF | Primero el trabajo más corto | Posible inanición |
+| Round Robin | Turnos mediante un quantum | Más cambios de contexto |
+| Prioridades | Primero el trabajo más prioritario | Posible inanición |
+
+**Efecto convoy:**
+
+Ocurre cuando un trabajo de larga duración provoca que
+otros trabajos más cortos tengan que esperar.
+
+**Inanición:**
+
+Ocurre cuando un proceso espera indefinidamente porque
+otros trabajos reciben continuamente mayor prioridad.
+
+**Envejecimiento (Aging):**
+
+Es una técnica que aumenta gradualmente la prioridad
+de los procesos que llevan mucho tiempo esperando,
+evitando que sean ignorados indefinidamente.
+
+
+#### 3. Comparación de políticas de planificación
+
+Se consideran cuatro pedidos que llegan en el instante
+cero, con las siguientes duraciones:
+
+| Pedido | Duración | Llegada |
+|---|---:|---:|
+| P1 | 8 | 0 |
+| P2 | 2 | 0 |
+| P3 | 4 | 0 |
+| P4 | 1 | 0 |
+
+**A. Política FIFO**
+
+Orden de ejecución: P1, P2, P3, P4.
+
+| Pedido | Empieza | Termina | Espera |
+|---|---:|---:|---:|
+| P1 | 0 | 8 | 0 |
+| P2 | 8 | 10 | 8 |
+| P3 | 10 | 14 | 10 |
+| P4 | 14 | 15 | 14 |
+
+Espera promedio:
+
+(0 + 8 + 10 + 14) / 4 = 8
+
+Retorno promedio:
+
+(8 + 10 + 14 + 15) / 4 = 11.75
+
+El pedido más perjudicado es P4, ya que debe esperar
+14 unidades de tiempo a pesar de ser el más corto.
+
+**B. Política SJF**
+
+Orden de ejecución: P4, P2, P3, P1.
+
+| Pedido | Empieza | Termina | Espera |
+|---|---:|---:|---:|
+| P4 | 0 | 1 | 0 |
+| P2 | 1 | 3 | 1 |
+| P3 | 3 | 7 | 3 |
+| P1 | 7 | 15 | 7 |
+
+Espera promedio:
+
+(0 + 1 + 3 + 7) / 4 = 2.75
+
+Retorno promedio:
+
+(1 + 3 + 7 + 15) / 4 = 6.50
+
+El pedido más perjudicado es P1, debido a que tiene
+la mayor duración y debe esperar a que terminen los
+tres pedidos más cortos.
+
+**C. Política Round Robin (Quantum = 2)**
+
+Cada pedido puede utilizar como máximo dos unidades
+de tiempo por turno.
+
+Secuencia de ejecución:
+
+P1: 0-2
+P2: 2-4
+P3: 4-6
+P4: 6-7
+P1: 7-9
+P3: 9-11
+P1: 11-13
+P1: 13-15
+
+| Pedido | Termina | Espera | Retorno |
+|---|---:|---:|---:|
+| P1 | 15 | 7 | 15 |
+| P2 | 4 | 2 | 4 |
+| P3 | 11 | 7 | 11 |
+| P4 | 7 | 6 | 7 |
+
+Espera promedio:
+
+(7 + 2 + 7 + 6) / 4 = 5.50
+
+Retorno promedio:
+
+(15 + 4 + 11 + 7) / 4 = 9.25
+
+Los pedidos P1 y P3 presentan los mayores tiempos
+de espera acumulada.
+
+**D. Tabla comparativa final**
+
+| Política | Espera promedio | Retorno promedio | Perjudicado |
+|---|---:|---:|---|
+| FIFO | 8.00 | 11.75 | P4 |
+| SJF | 2.75 | 6.50 | P1 |
+| Round Robin (q=2) | 5.50 | 9.25 | P1 y P3 |
+
+**Conclusión de la comparación:**
+
+SJF obtiene el menor tiempo de espera promedio, seguido
+por Round Robin y finalmente FIFO.
+
+Sin embargo, SJF puede perjudicar a los trabajos grandes,
+mientras que Round Robin permite que todos los procesos
+reciban tiempo de CPU de manera periódica.
+
+La elección de una política depende de los objetivos
+del sistema y de los trabajos que deben atenderse.
+
+
+
+
+#### 4. Selección de políticas para mi negocio
+
+**Descripción del negocio:**
+
+Mi negocio se dedica a la comercialización de equipos de
+redes y telecomunicaciones, incluyendo routers, switches,
+antenas inalámbricas, cámaras de seguridad, cableado
+estructurado y accesorios de conectividad.
+
+Además de recibir y preparar pedidos, el negocio realiza
+actividades administrativas, como facturación, cotizaciones,
+aclaraciones de pagos, atención de garantías y resolución
+de incidencias relacionadas con los clientes.
+
+Por esta razón, considero que una sola política de
+planificación no sería suficiente para organizar todas
+las actividades del negocio.
+
+**Políticas seleccionadas: FIFO y Prioridades.**
+
+**1. FIFO (First In, First Out)**
+
+Esta política sería utilizada para procesar las operaciones
+habituales, respetando el orden en que fueron solicitadas.
+
+Ejemplos:
+
+- Preparación de pedidos de equipos.
+- Ventas de productos.
+- Elaboración de cotizaciones.
+- Solicitudes normales de atención.
+
+**Ventaja:**
+
+Permite conservar un orden de atención comprensible
+y justo para los clientes.
+
+**Desventaja:**
+
+Una operación que requiere mucho tiempo puede retrasar
+a las siguientes, incluso si son más sencillas.
+
+**2. Planificación por prioridades**
+
+Esta política sería utilizada para gestionar las
+operaciones que requieren atención preferente debido
+a su urgencia o impacto en el cliente.
+
+Ejemplos:
+
+- Corrección urgente de facturas.
+- Aclaración de pagos que impiden entregar mercancía.
+- Incidencias que afectan una entrega comprometida.
+- Problemas administrativos que requieren solución inmediata.
+
+**Ventaja:**
+
+Permite resolver situaciones importantes sin obligarlas
+a esperar detrás de todas las operaciones normales.
+
+**Desventaja:**
+
+Los trabajos de baja prioridad podrían esperar demasiado
+si constantemente llegan solicitudes urgentes.
+
+Para solucionar este problema se podría implementar
+envejecimiento, aumentando gradualmente la prioridad
+de las solicitudes que llevan más tiempo esperando.
+
+**Ejemplo aplicado al negocio:**
+
+Supongamos que existen las siguientes solicitudes:
+
+| Solicitud | Operación | Prioridad |
+|---|---|---|
+| P1 | Venta de 5 routers | Normal |
+| P2 | Cotización de cable UTP | Normal |
+| P3 | Corregir factura que impide una entrega | Alta |
+| P4 | Venta de una cámara IP | Normal |
+
+Con FIFO se respetaría el orden P1, P2, P3 y P4.
+
+Con planificación por prioridades, P3 podría atenderse
+antes que las solicitudes normales pendientes, debido
+al impacto que representa para el cliente.
+
+Una vez resuelta la incidencia, continuarían las
+operaciones normales de acuerdo con su orden de llegada.
+
+**Conclusión:**
+
+Considero que combinar FIFO y planificación por prioridades
+es una alternativa adecuada para mi negocio.
+
+FIFO permitiría mantener el orden de las ventas, pedidos
+y cotizaciones, mientras que la planificación por
+prioridades facilitaría resolver problemas administrativos
+y situaciones urgentes.
+
+Esto permitiría administrar mejor los recursos disponibles,
+reducir los tiempos de respuesta ante incidencias y ofrecer
+un servicio más eficiente.
+
+También sería importante aplicar envejecimiento para evitar
+que las solicitudes normales sean desplazadas indefinidamente
+por nuevas operaciones urgentes.
+
+**Nota:**
+
+La selección anterior representa una propuesta de aplicación
+al negocio. Para el desarrollo práctico del servidor Java
+se implementarán FIFO y SJF, conforme a los requerimientos
+de la actividad.
+
+
+
+
+#### 5. Cambios de contexto del servidor
+
+**Objetivo:**
+
+Analizar cómo Linux administra la ejecución de mi servidor
+Java y observar los cambios de contexto cuando recibe
+múltiples pedidos.
+
+**Primera prueba: servidor en espera**
+
+Se inició el servidor utilizando:
+
+`java -cp src ServidorPedidos`
+
+Posteriormente se obtuvo su PID mediante:
+
+`pgrep -af '[S]ervidorPedidos'`
+
+PID obtenido: 42978
+
+Para consultar los cambios de contexto se ejecutó:
+
+`grep ctxt /proc/42978/status`
+
+| Tipo de cambio | Cantidad |
+|---|---:|
+| Voluntarios | 1 |
+| No voluntarios | 0 |
+
+**Segunda prueba: servidor con carga**
+
+Se generaron 50 pedidos mediante GeneradorPedidos.java
+y se enviaron al servidor utilizando una tubería anónima.
+
+Para medir la ejecución se utilizó:
+
+`java -cp src GeneradorPedidos 50 | /usr/bin/time -v -o evidencias/contexto50.txt java -cp src ServidorPedidos > evidencias/pedidos50.txt 2>&1`
+
+**Resultados obtenidos:**
+
+| Tipo de cambio | Cantidad |
+|---|---:|
+| Voluntarios | 2237 |
+| No voluntarios | 27 |
+| Total | 2264 |
+
+**Análisis de resultados:**
+
+Durante la ejecución completa se registraron 2237 cambios
+de contexto voluntarios y 27 involuntarios.
+
+Los cambios voluntarios representaron aproximadamente
+el 98.81% del total, mientras que los involuntarios
+representaron el 1.19%.
+
+Esto equivale a aproximadamente 83 cambios voluntarios
+por cada cambio involuntario.
+
+La elevada proporción de cambios voluntarios es
+compatible con un servidor que realiza operaciones
+de entrada, salida, espera y sincronización entre hilos.
+
+Los cambios involuntarios indican que también hubo
+ocasiones en las que el sistema operativo retiró
+el procesador para permitir la ejecución de otros
+procesos o hilos.
+
+La primera medición corresponde al hilo principal,
+mientras que la segunda se obtuvo mediante la
+herramienta time durante la ejecución completa.
+Por esta razón, las cifras no son directamente
+comparables.
+
+**Conclusión:**
+
+La práctica permitió observar cómo Linux administra
+la ejecución de un programa Java que atiende
+múltiples pedidos utilizando hilos.
+
+Los resultados muestran un predominio de cambios
+voluntarios sobre los involuntarios.
+
+Sin embargo, estas mediciones por sí solas no
+permiten determinar si el rendimiento del servidor
+es óptimo. Para ello sería necesario analizar
+también el consumo de CPU y los tiempos de respuesta.
+

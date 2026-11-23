@@ -6,11 +6,17 @@ public class Pedido {
     private int cantidad;
     private String estado;
 
+    // Semana 10: momento en que se crea el pedido
+    private final long horaLlegada;
+
     public Pedido(int id, String producto, int cantidad) {
         this.id = id;
         this.producto = producto;
         this.cantidad = cantidad;
         this.estado = "PENDIENTE";
+
+        // Registrar el instante de llegada en milisegundos
+        this.horaLlegada = System.currentTimeMillis();
     }
 
     public int getId() {
@@ -27,6 +33,11 @@ public class Pedido {
 
     public String getEstado() {
         return estado;
+    }
+
+    // Semana 10: consultar el momento de llegada
+    public long getHoraLlegada() {
+        return horaLlegada;
     }
 
     public void setEstado(String estado) {
